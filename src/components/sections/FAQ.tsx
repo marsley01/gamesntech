@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/effects/SectionHeading";
+import { SectionBackground } from "@/components/effects/SectionBackground";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 
@@ -39,6 +40,7 @@ export function FAQ() {
 
   return (
     <section className="relative py-24 md:py-32">
+      <SectionBackground variant="default" />
       <Container>
         <SectionHeading
           label="FAQ"

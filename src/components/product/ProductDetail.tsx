@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { ProductImage } from "@/components/ui/ProductImage";
 import { formatKES } from "@/lib/utils";
 import type { Product } from "@/lib/data";
 import { ArrowLeft, Shield, Zap, CheckCircle, ShoppingCart, Star } from "lucide-react";
@@ -17,10 +18,6 @@ const features = [
   { icon: Shield, text: "SSL encrypted & M-Pesa secured" },
   { icon: CheckCircle, text: "Verified authentic codes" },
 ];
-
-const categoryEmoji: Record<string, string> = {
-  gaming: "🎮", software: "💻", ai: "🤖", "gift-cards": "🎁", streaming: "📺",
-};
 
 export function ProductDetail({ product }: { product: Product }) {
   const router = useRouter();
@@ -45,16 +42,8 @@ export function ProductDetail({ product }: { product: Product }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="aspect-[4/3] rounded-2xl border border-border bg-surface relative overflow-hidden flex items-center justify-center shadow-gnt">
-              <motion.span
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-7xl"
-              >
-                {categoryEmoji[product.category] || "📦"}
-              </motion.span>
-              <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/40 to-transparent" />
+            <div className="aspect-[4/3] rounded-2xl border border-border overflow-hidden shadow-gnt">
+              <ProductImage product={product} aspect="4/3" />
             </div>
           </motion.div>
 

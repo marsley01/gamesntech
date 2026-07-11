@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/effects/SectionHeading";
+import { SectionBackground } from "@/components/effects/SectionBackground";
 import { Star } from "lucide-react";
 
 const reviews = [
@@ -46,7 +47,7 @@ const reviews = [
 export function CustomerReviews() {
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-bg-primary via-primary/[0.02] to-bg-primary pointer-events-none" />
+      <SectionBackground variant="default" />
       <Container>
         <SectionHeading
           label="Testimonials"

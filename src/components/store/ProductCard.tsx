@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Badge } from "@/components/ui/Badge";
+import { ProductImage } from "@/components/ui/ProductImage";
 import { cn, formatKES } from "@/lib/utils";
 import type { Product } from "@/lib/data";
 import { ShoppingCart, Star } from "lucide-react";
@@ -61,17 +62,10 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
               }}
             />
 
-            <div className="aspect-[16/10] bg-gradient-to-br from-surface-elevated to-surface flex items-center justify-center relative overflow-hidden">
-              <motion.span
-                className="text-5xl transition-all duration-500"
-                whileHover={{ scale: 1.1 }}
-              >
-                {product.category === "gaming" ? "🎮" : product.category === "software" ? "💻" : product.category === "ai" ? "🤖" : product.category === "gift-cards" ? "🎁" : "📺"}
-              </motion.span>
-              <div className="absolute inset-0 bg-gradient-to-t from-surface/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
+            <div className="relative">
+              <ProductImage product={product} showOverlay />
               {product.badge && (
-                <div className="absolute top-3 left-3">
+                <div className="absolute top-3 left-3 z-20">
                   <Badge variant="orange">{product.badge}</Badge>
                 </div>
               )}

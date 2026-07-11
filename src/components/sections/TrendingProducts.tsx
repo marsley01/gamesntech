@@ -2,6 +2,7 @@
 
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/effects/SectionHeading";
+import { SectionBackground } from "@/components/effects/SectionBackground";
 import { ProductCard } from "@/components/store/ProductCard";
 import { products } from "@/lib/data";
 
@@ -10,7 +11,7 @@ export function TrendingProducts() {
 
   return (
     <section className="relative py-24 md:py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-bg-primary via-primary/[0.02] to-bg-primary pointer-events-none" />
+      <SectionBackground variant="gaming" />
       <Container className="relative">
         <SectionHeading
           label="Trending Now"

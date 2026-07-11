@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/effects/SectionHeading";
+import { SectionBackground } from "@/components/effects/SectionBackground";
 import { Shield, Zap, HeadphonesIcon, CheckCircle, CreditCard, Users } from "lucide-react";
 import { AnimatedCounter } from "@/components/effects/AnimatedCounter";
 
@@ -18,6 +19,7 @@ const trustFeatures = [
 export function WhyGNT() {
   return (
     <section className="relative py-24 md:py-32">
+      <SectionBackground variant="default" />
       <Container>
         <SectionHeading
           label="Why GNT"

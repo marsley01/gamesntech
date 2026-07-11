@@ -3,18 +3,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { SectionBackground } from "@/components/effects/SectionBackground";
 import { ArrowRight } from "lucide-react";
 
 export function FinalCTA() {
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-bg-primary via-primary/[0.02] to-bg-primary" />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(245,166,35,0.06) 0%, transparent 60%)",
-        }}
-      />
+      <SectionBackground variant="gaming" />
 
       <Container className="relative">
         <motion.div
