@@ -33,7 +33,7 @@ export default function AdminAnalytics() {
             <Card hover={false} className="p-5">
               <div className="flex items-center justify-between mb-5">
                 <h3 className="text-sm font-bold font-[family-name:var(--font-inter)]">Monthly Revenue</h3>
-                <DollarSign className="h-4 w-4 text-accent-purple" />
+                <DollarSign className="h-4 w-4 text-primary" />
               </div>
               <div className="flex items-end gap-3 h-36">
                 {monthlyData.map((d) => (
@@ -42,7 +42,7 @@ export default function AdminAnalytics() {
                       {formatKES(d.revenue).replace("KES ", "")}
                     </span>
                     <div
-                      className="w-full rounded-md bg-accent-purple/70 hover:bg-accent-purple transition-colors"
+                      className="w-full rounded-md bg-primary/70 hover:bg-primary transition-colors"
                       style={{
                         height: `${(d.revenue / maxRevenue) * 100}%`,
                       }}
@@ -56,7 +56,7 @@ export default function AdminAnalytics() {
             <Card hover={false} className="p-5">
               <div className="flex items-center justify-between mb-5">
                 <h3 className="text-sm font-bold font-[family-name:var(--font-inter)]">Monthly Orders</h3>
-                <ShoppingBag className="h-4 w-4 text-accent-purple" />
+                <ShoppingBag className="h-4 w-4 text-primary" />
               </div>
               <div className="flex items-end gap-3 h-36">
                 {monthlyData.map((d) => (
@@ -84,7 +84,7 @@ export default function AdminAnalytics() {
               <Card key={s.label} hover={false} className="p-5">
                 <div className="flex items-start justify-between mb-2">
                   <span className="text-xs text-text-secondary">{s.label}</span>
-                  <TrendingUp className="h-4 w-4 text-accent-purple" />
+                  <TrendingUp className="h-4 w-4 text-primary" />
                 </div>
                 <p className="text-xl font-bold font-[family-name:var(--font-jetbrains)]">{s.value}</p>
                 <p className="text-xs text-success mt-1">{s.change} vs last period</p>

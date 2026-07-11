@@ -11,11 +11,11 @@ import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const accentMeta: Record<string, { color: string; text: string; border: string; bg: string; particleColor: string; gradient: string }> = {
-  gaming: { color: "text-accent-blue", text: "text-accent-blue", border: "border-accent-blue/20", bg: "bg-accent-blue/5", particleColor: "37, 99, 235", gradient: "from-accent-blue/10 via-transparent to-transparent" },
-  software: { color: "text-accent-purple", text: "text-accent-purple", border: "border-accent-purple/20", bg: "bg-accent-purple/5", particleColor: "124, 58, 237", gradient: "from-accent-purple/10 via-transparent to-transparent" },
-  ai: { color: "text-accent-cyan", text: "text-accent-cyan", border: "border-accent-cyan/20", bg: "bg-accent-cyan/5", particleColor: "34, 211, 238", gradient: "from-accent-cyan/10 via-transparent to-transparent" },
-  "gift-cards": { color: "text-accent-gold", text: "text-accent-gold", border: "border-accent-gold/20", bg: "bg-accent-gold/5", particleColor: "250, 204, 21", gradient: "from-accent-gold/10 via-transparent to-transparent" },
-  streaming: { color: "text-accent-purple", text: "text-accent-purple", border: "border-accent-purple/20", bg: "bg-accent-purple/5", particleColor: "124, 58, 237", gradient: "from-accent-purple/5 via-transparent to-transparent" },
+  gaming: { color: "text-primary", text: "text-primary", border: "border-primary/20", bg: "bg-primary/5", particleColor: "245, 166, 35", gradient: "from-primary/10 via-transparent to-transparent" },
+  software: { color: "text-accent-blue", text: "text-accent-blue", border: "border-accent-blue/20", bg: "bg-accent-blue/5", particleColor: "37, 99, 235", gradient: "from-accent-blue/10 via-transparent to-transparent" },
+  ai: { color: "text-accent-purple", text: "text-accent-purple", border: "border-accent-purple/20", bg: "bg-accent-purple/5", particleColor: "124, 58, 237", gradient: "from-accent-purple/10 via-transparent to-transparent" },
+  "gift-cards": { color: "text-primary", text: "text-primary", border: "border-primary/20", bg: "bg-primary/5", particleColor: "245, 166, 35", gradient: "from-primary/10 via-transparent to-transparent" },
+  streaming: { color: "text-accent-blue", text: "text-accent-blue", border: "border-accent-blue/20", bg: "bg-accent-blue/5", particleColor: "37, 99, 235", gradient: "from-accent-blue/5 via-transparent to-transparent" },
 };
 
 const emojiMap: Record<string, string> = {

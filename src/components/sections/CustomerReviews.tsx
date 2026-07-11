@@ -46,7 +46,7 @@ const reviews = [
 export function CustomerReviews() {
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-bg-primary via-accent-purple/[0.02] to-bg-primary pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-bg-primary via-primary/[0.02] to-bg-primary pointer-events-none" />
       <Container>
         <SectionHeading
           label="Testimonials"
@@ -54,22 +54,21 @@ export function CustomerReviews() {
           highlight="Thousands"
           description="Real reviews from real customers across Africa."
           align="center"
-          accent="gold"
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {reviews.map((review, i) => (
             <motion.div
               key={review.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.06, duration: 0.5 }}
-              className="rounded-2xl border border-[rgba(255,255,255,0.06)] bg-surface p-6 hover:bg-surface-elevated hover:border-[rgba(255,255,255,0.1)] transition-all duration-300"
+              transition={{ delay: i * 0.05, duration: 0.5 }}
+              className="rounded-2xl border border-border bg-surface p-6 hover:bg-surface-elevated hover:border-border-hover transition-all duration-300 shadow-gnt"
             >
               <div className="flex items-center gap-1 mb-4">
                 {Array.from({ length: review.rating }).map((_, j) => (
-                  <Star key={j} className="h-4 w-4 fill-accent-gold text-accent-gold" />
+                  <Star key={j} className="h-4 w-4 fill-primary text-primary" />
                 ))}
               </div>
               <p className="text-sm text-text-primary leading-relaxed mb-4">

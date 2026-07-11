@@ -31,7 +31,7 @@ export default function AdminCustomers() {
               <input
                 type="text"
                 placeholder="Search customers..."
-                className="h-10 w-60 rounded-xl border border-[rgba(255,255,255,0.08)] bg-surface pl-10 pr-4 text-xs text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-accent-purple/30 focus:ring-1 focus:ring-accent-purple/20 transition-all"
+                className="h-10 w-60 rounded-xl border border-[rgba(255,255,255,0.08)] bg-surface pl-10 pr-4 text-xs text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-primary/30 focus:ring-1 focus:ring-primary/20 transition-all"
               />
             </div>
           </div>
@@ -58,7 +58,7 @@ export default function AdminCustomers() {
                       </td>
                       <td className="py-3 px-5 text-text-secondary">{c.phone}</td>
                       <td className="py-3 px-5 font-bold font-[family-name:var(--font-jetbrains)]">{c.orders}</td>
-                      <td className="py-3 px-5 font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple">{formatKES(c.spent)}</td>
+                      <td className="py-3 px-5 font-bold font-[family-name:var(--font-jetbrains)] text-primary">{formatKES(c.spent)}</td>
                       <td className="py-3 px-5 text-text-secondary">{formatDate(c.joined)}</td>
                       <td className="py-3 px-5">
                         <Badge variant={c.status === "active" ? "success" : c.status === "new" ? "blue" : "default"}>

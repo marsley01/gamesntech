@@ -13,10 +13,8 @@ import {
   ArrowLeft,
   Smartphone,
   Shield,
-  CheckCircle,
   Package,
   CreditCard,
-  Zap,
   Loader2,
 } from "lucide-react";
 import Link from "next/link";
@@ -52,7 +50,7 @@ export function CheckoutForm() {
 
   return (
     <main className="pt-20 min-h-screen relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-accent-purple/[0.02] via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] via-transparent to-transparent pointer-events-none" />
       <Container className="max-w-xl relative">
         <Link
           href={selectedProduct ? `/product/${selectedProduct.slug}` : "/store"}
@@ -62,15 +60,14 @@ export function CheckoutForm() {
           Back
         </Link>
 
-        {/* Steps indicator */}
         <div className="flex items-center gap-3 mb-12">
           {steps.map((s, i) => (
             <div key={s.num} className="flex items-center gap-3">
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-500 font-[family-name:var(--font-space)] ${
                   i <= step
-                    ? "bg-accent-purple text-white shadow-lg shadow-accent-purple/20"
-                    : "bg-surface text-text-secondary border border-[rgba(255,255,255,0.06)]"
+                    ? "bg-primary text-black shadow-lg"
+                    : "bg-surface text-text-secondary border border-border"
                 }`}
               >
                 {i < step ? "✓" : s.num}
@@ -85,7 +82,7 @@ export function CheckoutForm() {
               {i < steps.length - 1 && (
                 <div
                   className={`w-6 h-px ${
-                    i < step ? "bg-accent-purple" : "bg-[rgba(255,255,255,0.06)]"
+                    i < step ? "bg-primary" : "bg-border"
                   }`}
                 />
               )}
@@ -113,8 +110,8 @@ export function CheckoutForm() {
                     onClick={() => setSelectedProduct(p)}
                     className={`flex items-center gap-4 p-4 rounded-xl border text-left transition-all duration-300 w-full ${
                       selectedProduct?.id === p.id
-                        ? "border-accent-purple/30 bg-accent-purple/[0.03]"
-                        : "border-[rgba(255,255,255,0.06)] bg-surface hover:bg-surface-elevated hover:border-[rgba(255,255,255,0.1)]"
+                        ? "border-primary/30 bg-primary/[0.03]"
+                        : "border-border bg-surface hover:bg-surface-elevated hover:border-border-hover"
                     }`}
                   >
                     <span className="text-2xl shrink-0">
@@ -124,7 +121,7 @@ export function CheckoutForm() {
                       <p className="text-sm font-semibold text-text-primary">{p.name}</p>
                       <p className="text-xs text-text-secondary truncate">{p.description}</p>
                     </div>
-                    <span className="text-base font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple shrink-0">
+                    <span className="text-base font-bold font-[family-name:var(--font-jetbrains)] text-primary shrink-0">
                       {formatKES(p.price)}
                     </span>
                   </button>
@@ -173,9 +170,9 @@ export function CheckoutForm() {
                 />
               )}
 
-              <div className="rounded-xl border border-[rgba(255,255,255,0.06)] bg-surface p-4">
+              <div className="rounded-xl border border-border bg-surface p-4">
                 <div className="flex items-center gap-3 text-sm">
-                  <Smartphone className="h-5 w-5 text-accent-purple shrink-0" />
+                  <Smartphone className="h-5 w-5 text-primary shrink-0" />
                   <div>
                     <p className="text-sm font-medium text-text-primary">M-Pesa Payment</p>
                     <p className="text-xs text-text-secondary">STK Push prompt sent to your phone</p>
@@ -212,30 +209,30 @@ export function CheckoutForm() {
                 <p className="text-sm text-text-secondary mt-1">Review your order before payment.</p>
               </div>
 
-              <div className="rounded-2xl border border-[rgba(255,255,255,0.06)] bg-surface p-6 space-y-4">
+              <div className="rounded-2xl border border-border bg-surface p-6 space-y-4 shadow-gnt">
                 <div className="flex items-center gap-4">
-                  <Package className="h-5 w-5 text-accent-purple shrink-0" />
+                  <Package className="h-5 w-5 text-primary shrink-0" />
                   <div className="flex-1 flex items-center justify-between">
                     <span className="text-sm text-text-secondary">Product</span>
                     <span className="text-sm font-semibold text-text-primary">{selectedProduct?.name}</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <CreditCard className="h-5 w-5 text-accent-purple shrink-0" />
+                  <CreditCard className="h-5 w-5 text-primary shrink-0" />
                   <div className="flex-1 flex items-center justify-between">
                     <span className="text-sm text-text-secondary">Payment</span>
                     <span className="text-sm font-semibold text-text-primary">M-Pesa</span>
                   </div>
                 </div>
-                <div className="border-t border-[rgba(255,255,255,0.06)] pt-4 flex items-center justify-between">
+                <div className="border-t border-border pt-4 flex items-center justify-between">
                   <span className="text-base font-bold font-[family-name:var(--font-inter)]">Total</span>
-                  <span className="text-2xl font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple">
+                  <span className="text-2xl font-bold font-[family-name:var(--font-jetbrains)] text-primary">
                     {formatKES(selectedProduct?.price || 0)}
                   </span>
                 </div>
               </div>
 
-              <div className="rounded-xl border border-[rgba(255,255,255,0.06)] bg-surface p-4">
+              <div className="rounded-xl border border-border bg-surface p-4">
                 <p className="text-xs text-text-secondary mb-2 font-medium">M-Pesa Phone Number</p>
                 <input
                   type="tel"
@@ -278,9 +275,9 @@ export function CheckoutForm() {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="w-16 h-16 rounded-2xl bg-accent-purple/10 flex items-center justify-center mx-auto"
+                className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto"
               >
-                <Loader2 className="h-8 w-8 text-accent-purple animate-spin" />
+                <Loader2 className="h-8 w-8 text-primary animate-spin" />
               </motion.div>
 
               <div>
@@ -294,15 +291,15 @@ export function CheckoutForm() {
 
               <div className="max-w-xs mx-auto space-y-3">
                 <div className="flex items-center gap-3 text-sm text-text-secondary">
-                  <div className="w-5 h-5 rounded-full border-2 border-accent-purple/30 border-t-accent-purple animate-spin" />
+                  <div className="w-5 h-5 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
                   Sending STK Push to {phone}
                 </div>
                 <div className="flex items-center gap-3 text-sm text-text-secondary">
-                  <div className="w-5 h-5 rounded-full border-2 border-accent-purple/30 border-t-accent-purple animate-spin" />
+                  <div className="w-5 h-5 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
                   Waiting for confirmation
                 </div>
                 <div className="flex items-center gap-3 text-sm text-text-secondary/40">
-                  <div className="w-5 h-5 rounded-full border-2 border-[rgba(255,255,255,0.06)]" />
+                  <div className="w-5 h-5 rounded-full border-2 border-border" />
                   Delivering your code
                 </div>
               </div>

@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Particles } from "@/components/effects/Particles";
-import { CheckCircle, Copy, Gift, ArrowLeft, Sparkles } from "lucide-react";
+import { CheckCircle, Copy, Gift, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 interface CodeRevealProps {
@@ -29,14 +29,14 @@ export function CodeReveal({ orderId, productName, code }: CodeRevealProps) {
 
   return (
     <main className="min-h-screen pt-20 pb-16 flex items-center justify-center relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-accent-purple/[0.03] via-transparent to-transparent pointer-events-none" />
-      <Particles count={30} color="124, 58, 237" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] via-transparent to-transparent pointer-events-none" />
+      <Particles count={20} color="245, 166, 35" />
 
       <Container className="max-w-lg relative">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center space-y-8"
         >
           <motion.div
@@ -51,7 +51,7 @@ export function CodeReveal({ orderId, productName, code }: CodeRevealProps) {
 
           <div>
             <Badge variant="success" className="mb-4">Payment Confirmed</Badge>
-            <h1 className="text-3xl md:text-4xl font-bold leading-[1.1] tracking-tight font-[family-name:var(--font-inter)]">
+            <h1 className="text-3xl md:text-4xl font-bold leading-[1.05] tracking-tight font-[family-name:var(--font-inter)]">
               Your Code is Ready
             </h1>
             <p className="text-text-secondary mt-2 text-sm">
@@ -60,14 +60,14 @@ export function CodeReveal({ orderId, productName, code }: CodeRevealProps) {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-[rgba(255,255,255,0.06)] bg-surface p-6 space-y-4">
+          <div className="rounded-2xl border border-border bg-surface p-6 space-y-4 shadow-gnt">
             <p className="text-sm text-text-secondary">{productName}</p>
 
             {!revealed ? (
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <button
                   onClick={handleReveal}
-                  className="w-full py-8 rounded-xl bg-gradient-to-br from-accent-purple to-accent-blue text-white font-semibold text-sm relative overflow-hidden group shadow-lg shadow-accent-purple/20 font-[family-name:var(--font-space)]"
+                  className="w-full py-8 rounded-xl bg-primary text-black font-semibold text-sm relative overflow-hidden group font-[family-name:var(--font-space)]"
                 >
                   <motion.span
                     animate={{ opacity: [0.6, 1, 0.6] }}
@@ -77,24 +77,23 @@ export function CodeReveal({ orderId, productName, code }: CodeRevealProps) {
                     <Gift className="h-5 w-5" />
                     Tap to Reveal Code
                   </motion.span>
-                  <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_15px,rgba(255,255,255,0.03)_15px,rgba(255,255,255,0.03)_30px)]" />
                 </button>
               </motion.div>
             ) : (
               <motion.div
                 initial={{ opacity: 0, rotateX: 25 }}
                 animate={{ opacity: 1, rotateX: 0 }}
-                transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className="space-y-4"
               >
                 <motion.div
                   initial={{ filter: "blur(15px)" }}
                   animate={{ filter: "blur(0)" }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="bg-bg-secondary rounded-xl p-5 border border-[rgba(255,255,255,0.06)]"
+                  className="bg-bg-secondary rounded-xl p-5 border border-border"
                 >
                   <p className="text-[11px] text-text-secondary tracking-wider uppercase mb-2 font-medium">Your Code</p>
-                  <p className="text-xl md:text-2xl font-bold font-[family-name:var(--font-jetbrains)] tracking-[0.3em] text-accent-purple break-all">
+                  <p className="text-xl md:text-2xl font-bold font-[family-name:var(--font-jetbrains)] tracking-[0.3em] text-primary break-all">
                     {code}
                   </p>
                 </motion.div>
@@ -109,7 +108,7 @@ export function CodeReveal({ orderId, productName, code }: CodeRevealProps) {
                 </Button>
 
                 <p className="text-xs text-text-secondary flex items-center justify-center gap-1">
-                  <Sparkles className="h-3 w-3 text-accent-gold" />
+                  <Sparkles className="h-3 w-3 text-primary" />
                   Also sent to your email and SMS
                 </p>
               </motion.div>

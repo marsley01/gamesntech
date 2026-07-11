@@ -61,12 +61,12 @@ export default function AdminDashboard() {
                     className="flex items-center justify-between py-2.5 border-b border-[rgba(255,255,255,0.04)] last:border-0 group"
                   >
                     <div>
-                      <p className="text-sm font-medium text-text-primary group-hover:text-accent-purple transition-colors">{order.product}</p>
+                      <p className="text-sm font-medium text-text-primary group-hover:text-primary transition-colors">{order.product}</p>
                       <p className="text-xs text-text-secondary">{order.customer} &middot; {order.id}</p>
                     </div>
                     <div className="text-right">
                       <p className="text-sm font-bold font-[family-name:var(--font-jetbrains)]">{formatKES(order.amount)}</p>
-                      <Badge variant={order.status === "completed" ? "success" : order.status === "processing" ? "purple" : order.status === "pending" ? "gold" : "error"}>
+                      <Badge variant={order.status === "completed" ? "success" : order.status === "processing" ? "blue" : order.status === "pending" ? "orange" : "error"}>
                         {order.status}
                       </Badge>
                     </div>
@@ -91,12 +91,12 @@ export default function AdminDashboard() {
                       <p className="text-sm text-text-primary truncate">{p.name}</p>
                       <div className="w-full h-1 rounded-full bg-white/[0.04] mt-1.5 overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-accent-purple"
+                          className="h-full rounded-full bg-primary"
                           style={{ width: `${Math.min(100, (p.count / 142) * 100)}%` }}
                         />
                       </div>
                     </div>
-                    <span className="text-sm font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple shrink-0">
+                    <span className="text-sm font-bold font-[family-name:var(--font-jetbrains)] text-primary shrink-0">
                       {formatKES(p.revenue)}
                     </span>
                   </div>

@@ -17,8 +17,8 @@ const orders = [
 
 const statusVariant = {
   completed: "success" as const,
-  processing: "purple" as const,
-  pending: "gold" as const,
+  processing: "blue" as const,
+  pending: "orange" as const,
   failed: "error" as const,
   confirmed: "blue" as const,
 };
@@ -39,7 +39,7 @@ export default function AdminOrders() {
               <input
                 type="text"
                 placeholder="Search orders..."
-                className="h-10 w-60 rounded-xl border border-[rgba(255,255,255,0.08)] bg-surface pl-10 pr-4 text-xs text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-accent-purple/30 focus:ring-1 focus:ring-accent-purple/20 transition-all"
+                className="h-10 w-60 rounded-xl border border-[rgba(255,255,255,0.08)] bg-surface pl-10 pr-4 text-xs text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-primary/30 focus:ring-1 focus:ring-primary/20 transition-all"
               />
             </div>
           </div>
@@ -66,7 +66,7 @@ export default function AdminOrders() {
                         <p className="text-text-secondary">{order.email}</p>
                       </td>
                       <td className="py-3 px-5 text-text-primary">{order.product}</td>
-                      <td className="py-3 px-5 font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple">{formatKES(order.amount)}</td>
+                      <td className="py-3 px-5 font-bold font-[family-name:var(--font-jetbrains)] text-primary">{formatKES(order.amount)}</td>
                       <td className="py-3 px-5 text-text-secondary">{formatDate(order.date)}</td>
                       <td className="py-3 px-5">
                         <Badge variant={statusVariant[order.status]}>{order.status}</Badge>

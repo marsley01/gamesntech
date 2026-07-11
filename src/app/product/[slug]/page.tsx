@@ -15,7 +15,7 @@ export default function ProductPage() {
         <div className="text-center py-20">
           <p className="text-5xl mb-4">🔍</p>
           <h1 className="text-2xl font-bold mb-2">Product not found</h1>
-          <Link href="/store" className="text-accent-purple hover:underline text-sm">
+          <Link href="/store" className="text-primary hover:underline text-sm">
             Browse all products
           </Link>
         </div>

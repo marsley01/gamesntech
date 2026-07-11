@@ -19,14 +19,14 @@ export function StatCard({ label, value, change, positive, icon: Icon, className
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       className={cn(
-        "rounded-2xl border border-[rgba(255,255,255,0.06)] bg-surface p-5 hover:bg-surface-elevated hover:border-[rgba(255,255,255,0.1)] transition-all duration-300",
+        "rounded-2xl border border-border bg-surface p-5 hover:bg-surface-elevated hover:border-border-hover transition-all duration-300 shadow-gnt",
         className
       )}
     >
       <div className="flex items-start justify-between mb-3">
         <span className="text-xs text-text-secondary tracking-wide">{label}</span>
-        <div className="w-8 h-8 rounded-xl bg-accent-purple/10 flex items-center justify-center">
-          <Icon className="h-4 w-4 text-accent-purple" />
+        <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
+          <Icon className="h-4 w-4 text-primary" />
         </div>
       </div>
       <p className="text-2xl font-bold font-[family-name:var(--font-jetbrains)] tracking-tight">{value}</p>

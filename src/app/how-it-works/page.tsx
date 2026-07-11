@@ -34,20 +34,20 @@ const features = [
 export default function HowItWorksPage() {
   return (
     <main className="pt-20 pb-16 min-h-screen relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-accent-purple/[0.02] via-transparent to-transparent pointer-events-none" />
-      <Particles count={25} color="124, 58, 237" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] via-transparent to-transparent pointer-events-none" />
+      <Particles count={15} color="245, 166, 35" />
 
-      <div className="border-b border-[rgba(255,255,255,0.06)] relative">
+      <div className="border-b border-border relative">
         <Container className="py-16 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <p className="text-xs tracking-[0.2em] uppercase text-accent-purple mb-4 font-medium font-[family-name:var(--font-space)]">
+            <p className="text-xs tracking-[0.15em] uppercase text-primary mb-4 font-medium font-[family-name:var(--font-space)]">
               How It Works
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-4 font-[family-name:var(--font-inter)]">
-              Three Simple <span className="text-glow-purple text-accent-purple">Steps</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-4 font-[family-name:var(--font-inter)]">
+              Three Simple <span className="text-glow-orange text-primary">Steps</span>
             </h1>
             <p className="text-text-secondary max-w-md mx-auto">
               Get your digital codes in under 2 minutes. No queues, no hassle.
@@ -68,13 +68,13 @@ export default function HowItWorksPage() {
               className="relative"
             >
               {i < steps.length - 1 && (
-                <div className="hidden md:block absolute top-12 left-[60%] w-[80%] h-px bg-gradient-to-r from-accent-purple/20 to-transparent" />
+                <div className="hidden md:block absolute top-12 left-[60%] w-[80%] h-px bg-gradient-to-r from-primary/20 to-transparent" />
               )}
-              <div className="rounded-2xl border border-[rgba(255,255,255,0.06)] bg-surface p-8 text-center relative">
-                <div className="w-12 h-12 rounded-xl bg-accent-purple/10 flex items-center justify-center mx-auto mb-5">
-                  <step.icon className="h-6 w-6 text-accent-purple" />
+              <div className="rounded-2xl border border-border bg-surface p-8 text-center relative shadow-gnt">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
+                  <step.icon className="h-6 w-6 text-primary" />
                 </div>
-                <div className="w-7 h-7 rounded-full bg-accent-purple text-white text-xs font-bold flex items-center justify-center mx-auto mb-4 font-[family-name:var(--font-space)]">
+                <div className="w-7 h-7 rounded-full bg-primary text-black text-xs font-bold flex items-center justify-center mx-auto mb-4 font-[family-name:var(--font-space)]">
                   {i + 1}
                 </div>
                 <h3 className="text-lg font-bold font-[family-name:var(--font-inter)] mb-3">{step.title}</h3>
@@ -88,15 +88,15 @@ export default function HowItWorksPage() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="rounded-2xl border border-[rgba(255,255,255,0.06)] bg-surface p-8 md:p-12 text-center max-w-2xl mx-auto"
+          className="rounded-2xl border border-border bg-surface p-8 md:p-12 text-center max-w-2xl mx-auto shadow-gnt"
         >
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-8 font-[family-name:var(--font-inter)]">
-            Why Choose <span className="text-glow-purple text-accent-purple">Games N Tech</span>?
+            Why Choose <span className="text-glow-orange text-primary">Games N Tech</span>?
           </h2>
           <div className="grid sm:grid-cols-3 gap-6 max-w-xl mx-auto">
             {features.map((f) => (
               <div key={f.text} className="flex items-center gap-3 text-sm">
-                <f.icon className="h-4 w-4 text-accent-purple shrink-0" />
+                <f.icon className="h-4 w-4 text-primary shrink-0" />
                 <span className="text-left text-text-secondary">{f.text}</span>
               </div>
             ))}

@@ -18,26 +18,17 @@ const features = [
   { icon: CheckCircle, text: "Verified authentic codes" },
 ];
 
-const categoryAccent: Record<string, { gradient: string; particle: string }> = {
-  gaming: { gradient: "from-accent-blue/10 via-transparent to-transparent", particle: "37, 99, 235" },
-  software: { gradient: "from-accent-purple/10 via-transparent to-transparent", particle: "124, 58, 237" },
-  ai: { gradient: "from-accent-cyan/10 via-transparent to-transparent", particle: "34, 211, 238" },
-  "gift-cards": { gradient: "from-accent-gold/10 via-transparent to-transparent", particle: "250, 204, 21" },
-  streaming: { gradient: "from-accent-purple/5 via-transparent to-transparent", particle: "124, 58, 237" },
-};
-
 const categoryEmoji: Record<string, string> = {
   gaming: "🎮", software: "💻", ai: "🤖", "gift-cards": "🎁", streaming: "📺",
 };
 
 export function ProductDetail({ product }: { product: Product }) {
   const router = useRouter();
-  const accent = categoryAccent[product.category] || categoryAccent.gaming;
 
   return (
     <main className="pt-20 min-h-screen relative">
-      <div className={cn("absolute inset-0 bg-gradient-to-b", accent.gradient)} />
-      <Particles count={30} color={accent.particle} />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] via-transparent to-transparent pointer-events-none" />
+      <Particles count={20} color="245, 166, 35" />
 
       <Container className="relative">
         <Link
@@ -52,14 +43,14 @@ export function ProductDetail({ product }: { product: Product }) {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="aspect-[4/3] rounded-2xl border border-[rgba(255,255,255,0.06)] bg-surface relative overflow-hidden flex items-center justify-center">
+            <div className="aspect-[4/3] rounded-2xl border border-border bg-surface relative overflow-hidden flex items-center justify-center shadow-gnt">
               <motion.span
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-8xl"
+                className="text-7xl"
               >
                 {categoryEmoji[product.category] || "📦"}
               </motion.span>
@@ -70,25 +61,25 @@ export function ProductDetail({ product }: { product: Product }) {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="space-y-6"
           >
             <div className="space-y-4">
-              {product.badge && <Badge variant="purple">{product.badge}</Badge>}
-              <p className="text-xs tracking-[0.2em] uppercase text-text-secondary font-medium font-[family-name:var(--font-space)]">
+              {product.badge && <Badge variant="orange">{product.badge}</Badge>}
+              <p className="text-[11px] tracking-[0.15em] uppercase text-text-secondary font-medium font-[family-name:var(--font-space)]">
                 {product.category.replace("-", " ")}
               </p>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight font-[family-name:var(--font-inter)]">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.05] tracking-tight font-[family-name:var(--font-inter)]">
                 {product.name}
               </h1>
-              <p className="text-lg text-text-secondary leading-relaxed">
+              <p className="text-base text-text-secondary leading-relaxed">
                 {product.description}
               </p>
             </div>
 
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-1">
-                <Star className="h-4 w-4 fill-accent-gold text-accent-gold" />
+                <Star className="h-4 w-4 fill-primary text-primary" />
                 <span className="text-sm font-semibold">{product.rating}</span>
               </div>
               <span className="text-sm text-text-secondary">
@@ -99,7 +90,7 @@ export function ProductDetail({ product }: { product: Product }) {
               )}
             </div>
 
-            <div className="text-4xl font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple">
+            <div className="text-4xl font-bold font-[family-name:var(--font-jetbrains)] text-primary">
               {formatKES(product.price)}
             </div>
 
@@ -112,7 +103,7 @@ export function ProductDetail({ product }: { product: Product }) {
                   transition={{ delay: 0.3 + i * 0.1 }}
                   className="flex items-center gap-3 text-sm text-text-secondary"
                 >
-                  <f.icon className="h-4 w-4 text-accent-purple shrink-0" />
+                  <f.icon className="h-4 w-4 text-primary shrink-0" />
                   {f.text}
                 </motion.div>
               ))}
