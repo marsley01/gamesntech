@@ -41,7 +41,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           <div className="col-span-2 md:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-accent-purple to-accent-blue flex items-center justify-center shadow-lg shadow-accent-purple/20">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent-blue flex items-center justify-center shadow-lg shadow-primary/20">
                 <span className="text-white font-black text-sm tracking-tight font-[family-name:var(--font-space)]">GNT</span>
               </div>
               <span className="font-semibold text-sm tracking-wide text-text-primary/80">

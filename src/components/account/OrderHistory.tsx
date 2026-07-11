@@ -8,10 +8,10 @@ import type { Order, OrderStatus } from "@/lib/data";
 import { Package, Eye } from "lucide-react";
 import Link from "next/link";
 
-const statusVariant: Record<OrderStatus, "purple" | "success" | "gold" | "blue" | "error"> = {
-  pending: "gold",
+const statusVariant: Record<OrderStatus, "orange" | "success" | "blue" | "error"> = {
+  pending: "orange",
   confirmed: "blue",
-  processing: "purple",
+  processing: "blue",
   completed: "success",
   failed: "error",
 };
@@ -42,7 +42,7 @@ export function OrderHistory({ orders }: { orders: Order[] }) {
         >
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-accent-purple/10 flex items-center justify-center text-lg shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-lg shrink-0">
                 🎮
               </div>
               <div>
@@ -51,7 +51,7 @@ export function OrderHistory({ orders }: { orders: Order[] }) {
               </div>
             </div>
             <div className="text-right shrink-0">
-              <p className="text-sm font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple">{formatKES(order.price)}</p>
+              <p className="text-sm font-bold font-[family-name:var(--font-jetbrains)] text-primary">{formatKES(order.price)}</p>
               <Badge variant={statusVariant[order.status]} className="mt-1">
                 {order.status}
               </Badge>
@@ -62,7 +62,7 @@ export function OrderHistory({ orders }: { orders: Order[] }) {
             <div className="mt-3 pt-3 border-t border-[rgba(255,255,255,0.06)] flex items-center justify-between">
               <div>
                 <p className="text-[11px] text-text-secondary mb-0.5">Your Code</p>
-                <p className="font-mono text-xs font-bold tracking-wider text-accent-purple/80 font-[family-name:var(--font-jetbrains)]">
+                <p className="font-mono text-xs font-bold tracking-wider text-primary/80 font-[family-name:var(--font-jetbrains)]">
                   {order.code}
                 </p>
               </div>

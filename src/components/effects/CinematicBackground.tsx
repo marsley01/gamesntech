@@ -12,8 +12,8 @@ interface CinematicBackgroundProps {
 
 export function CinematicBackground({
   className,
-  gradient = "from-accent-purple/10 via-transparent to-transparent",
-  glowColor = "rgba(124,58,237,0.15)",
+  gradient = "from-primary/10 via-transparent to-transparent",
+  glowColor = "rgba(245,166,35,0.15)",
   image,
   children,
 }: CinematicBackgroundProps) {

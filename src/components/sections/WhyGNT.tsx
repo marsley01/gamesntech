@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/effects/SectionHeading";
+import { SectionBackground } from "@/components/effects/SectionBackground";
 import { Shield, Zap, HeadphonesIcon, CheckCircle, CreditCard, Users } from "lucide-react";
 import { AnimatedCounter } from "@/components/effects/AnimatedCounter";
 
@@ -18,6 +19,7 @@ const trustFeatures = [
 export function WhyGNT() {
   return (
     <section className="relative py-24 md:py-32">
+      <SectionBackground variant="default" />
       <Container>
         <SectionHeading
           label="Why GNT"
@@ -26,18 +28,18 @@ export function WhyGNT() {
           description="Every detail engineered for speed, security, and trust."
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
           {trustFeatures.map((feature, i) => (
             <motion.div
               key={feature.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.06, duration: 0.5 }}
-              className="rounded-2xl border border-[rgba(255,255,255,0.06)] bg-surface p-6 hover:bg-surface-elevated hover:border-[rgba(255,255,255,0.1)] transition-all duration-300"
+              transition={{ delay: i * 0.05, duration: 0.5 }}
+              className="rounded-2xl border border-border bg-surface p-6 hover:bg-surface-elevated hover:border-border-hover transition-all duration-300 shadow-gnt"
             >
-              <div className="w-10 h-10 rounded-xl bg-accent-purple/10 flex items-center justify-center mb-4">
-                <feature.icon className="h-5 w-5 text-accent-purple" />
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                <feature.icon className="h-5 w-5 text-primary" />
               </div>
               <h3 className="text-base font-bold text-text-primary mb-2">{feature.title}</h3>
               <p className="text-sm text-text-secondary leading-relaxed">{feature.description}</p>
@@ -45,7 +47,7 @@ export function WhyGNT() {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-border shadow-gnt">
           {[
             { value: 10000, suffix: "+", label: "Customers" },
             { value: 50000, suffix: "+", label: "Orders Fulfilled" },
@@ -53,7 +55,7 @@ export function WhyGNT() {
             { value: 2, suffix: " min", label: "Avg. Delivery" },
           ].map((stat) => (
             <div key={stat.label} className="bg-surface p-6 md:p-8 text-center">
-              <p className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-jetbrains)] text-text-primary mb-1">
+              <p className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-jetbrains)] text-primary mb-1">
                 <AnimatedCounter to={stat.value} suffix={stat.suffix} />
               </p>
               <p className="text-sm text-text-secondary">{stat.label}</p>

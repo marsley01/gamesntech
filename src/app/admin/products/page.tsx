@@ -29,19 +29,19 @@ export default function AdminProducts() {
           <div className="space-y-3">
             {products.map((product) => (
               <Card key={product.id} hover={false} className="flex items-center gap-5 p-4">
-                <div className="w-10 h-10 rounded-xl bg-accent-purple/10 flex items-center justify-center text-lg shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-lg shrink-0">
                   {product.category === "gaming" ? "🎮" : product.category === "software" ? "💻" : product.category === "ai" ? "🤖" : product.category === "gift-cards" ? "🎁" : "📺"}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
                     <p className="text-sm font-semibold text-text-primary">{product.name}</p>
-                    {product.featured && <Badge variant="purple">Featured</Badge>}
+                    {product.featured && <Badge variant="orange">Featured</Badge>}
                     {product.badge && <Badge variant="blue">{product.badge}</Badge>}
                   </div>
                   <p className="text-xs text-text-secondary truncate mt-0.5">{product.description}</p>
                 </div>
                 <div className="text-right shrink-0">
-                  <p className="text-sm font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple">{formatKES(product.price)}</p>
+                  <p className="text-sm font-bold font-[family-name:var(--font-jetbrains)] text-primary">{formatKES(product.price)}</p>
                   <p className="text-[11px] text-text-secondary capitalize">{product.category.replace("-", " ")}</p>
                 </div>
                 <div className="flex gap-1 shrink-0">

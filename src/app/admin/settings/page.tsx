@@ -21,7 +21,7 @@ export default function AdminSettings() {
           <div className="space-y-5 max-w-xl">
             <Card hover={false} className="p-5">
               <div className="flex items-center gap-3 mb-5">
-                <Key className="h-5 w-5 text-accent-purple" />
+                <Key className="h-5 w-5 text-primary" />
                 <h3 className="text-sm font-bold font-[family-name:var(--font-inter)]">API Keys</h3>
               </div>
               <div className="space-y-4">
@@ -35,7 +35,7 @@ export default function AdminSettings() {
 
             <Card hover={false} className="p-5">
               <div className="flex items-center gap-3 mb-5">
-                <Bell className="h-5 w-5 text-accent-purple" />
+                <Bell className="h-5 w-5 text-primary" />
                 <h3 className="text-sm font-bold font-[family-name:var(--font-inter)]">Notifications</h3>
               </div>
               <div className="space-y-4">
@@ -47,7 +47,7 @@ export default function AdminSettings() {
 
             <Card hover={false} className="p-5">
               <div className="flex items-center gap-3 mb-5">
-                <Globe className="h-5 w-5 text-accent-purple" />
+                <Globe className="h-5 w-5 text-primary" />
                 <h3 className="text-sm font-bold font-[family-name:var(--font-inter)]">General</h3>
               </div>
               <div className="space-y-4">

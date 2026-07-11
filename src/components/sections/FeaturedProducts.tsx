@@ -2,6 +2,7 @@
 
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/effects/SectionHeading";
+import { SectionBackground } from "@/components/effects/SectionBackground";
 import { ProductCard } from "@/components/store/ProductCard";
 import { products } from "@/lib/data";
 
@@ -10,6 +11,7 @@ export function FeaturedProducts() {
 
   return (
     <section className="relative py-24 md:py-32">
+      <SectionBackground variant="gaming" />
       <Container>
         <SectionHeading
           label="Featured Products"

@@ -10,23 +10,22 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "sm" | "md" | "lg";
   loading?: boolean;
   fullWidth?: boolean;
-  href?: string;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", loading, fullWidth, children, disabled, ...props }, ref) => {
     const base =
-      "inline-flex items-center justify-center font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-purple focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary disabled:opacity-50 disabled:pointer-events-none font-[family-name:var(--font-space)]";
+      "inline-flex items-center justify-center font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary disabled:opacity-50 disabled:pointer-events-none font-[family-name:var(--font-space)]";
 
     const variants = {
       primary:
-        "bg-accent-purple text-white hover:bg-accent-purple/90 shadow-lg shadow-accent-purple/20 active:scale-[0.97]",
+        "bg-primary text-black hover:bg-primary-hover shadow-lg active:scale-[0.97]",
       secondary:
-        "bg-white/[0.06] text-text-primary hover:bg-white/[0.1] border border-[rgba(255,255,255,0.08)]",
+        "bg-white/[0.05] text-text-primary hover:bg-white/[0.08] border border-border backdrop-blur-xl",
       ghost:
         "bg-transparent text-text-secondary hover:text-text-primary hover:bg-white/[0.04]",
       outline:
-        "bg-transparent border border-accent-purple/30 text-accent-purple hover:bg-accent-purple/10",
+        "bg-transparent border border-primary/30 text-primary hover:bg-primary/10",
       danger:
         "bg-error text-white hover:bg-error/90",
     };

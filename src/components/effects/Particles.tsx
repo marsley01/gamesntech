@@ -11,7 +11,7 @@ interface Particle {
   opacity: number;
 }
 
-export function Particles({ count = 40, color = "124, 58, 237" }: { count?: number; color?: string }) {
+export function Particles({ count = 30, color = "245, 166, 35" }: { count?: number; color?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -36,10 +36,10 @@ export function Particles({ count = 40, color = "124, 58, 237" }: { count?: numb
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.5 + 0.1,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        size: Math.random() * 1.5 + 0.5,
+        opacity: Math.random() * 0.4 + 0.05,
       });
     }
 

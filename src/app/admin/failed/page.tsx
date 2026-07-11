@@ -42,7 +42,7 @@ export default function AdminFailed() {
                   <p className="text-xs text-error mt-1">Reason: {tx.reason}</p>
                 </div>
                 <div className="text-right shrink-0 space-y-1">
-                  <p className="text-sm font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple">{formatKES(tx.amount)}</p>
+                  <p className="text-sm font-bold font-[family-name:var(--font-jetbrains)] text-primary">{formatKES(tx.amount)}</p>
                   <p className="text-xs text-text-secondary">Retries: {tx.retry}/3</p>
                 </div>
                 <div className="flex gap-2 shrink-0">

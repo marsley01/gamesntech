@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/effects/SectionHeading";
+import { SectionBackground } from "@/components/effects/SectionBackground";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 
@@ -39,6 +40,7 @@ export function FAQ() {
 
   return (
     <section className="relative py-24 md:py-32">
+      <SectionBackground variant="default" />
       <Container>
         <SectionHeading
           label="FAQ"
@@ -46,7 +48,6 @@ export function FAQ() {
           highlight="Answered."
           description="Everything you need to know about using Games N Tech."
           align="center"
-          accent="cyan"
         />
 
         <div className="max-w-2xl mx-auto space-y-3">
@@ -58,10 +59,10 @@ export function FAQ() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
               className={cn(
-                "rounded-2xl border transition-all duration-300 cursor-pointer",
+                "rounded-2xl border transition-all duration-300 cursor-pointer shadow-gnt",
                 openIndex === i
-                  ? "border-accent-purple/20 bg-accent-purple/[0.02]"
-                  : "border-[rgba(255,255,255,0.06)] bg-surface hover:bg-surface-elevated hover:border-[rgba(255,255,255,0.1)]"
+                  ? "border-primary/20 bg-primary/[0.02]"
+                  : "border-border bg-surface hover:bg-surface-elevated hover:border-border-hover"
               )}
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
             >
@@ -80,7 +81,7 @@ export function FAQ() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     className="overflow-hidden"
                   >
                     <p className="px-5 pb-5 text-sm text-text-secondary leading-relaxed">

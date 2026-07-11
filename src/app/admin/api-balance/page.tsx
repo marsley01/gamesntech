@@ -24,9 +24,9 @@ export default function AdminApiBalance() {
               <div className="flex items-start justify-between mb-5">
                 <div>
                   <p className="text-xs text-text-secondary mb-1">Reloadly Wallet Balance</p>
-                  <p className="text-3xl font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple">{formatKES(45200)}</p>
+                  <p className="text-3xl font-bold font-[family-name:var(--font-jetbrains)] text-primary">{formatKES(45200)}</p>
                 </div>
-                <Wallet className="h-6 w-6 text-accent-purple" />
+                <Wallet className="h-6 w-6 text-primary" />
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-xs">
@@ -34,9 +34,9 @@ export default function AdminApiBalance() {
                   <span className="font-medium font-[family-name:var(--font-jetbrains)]">KES 10,000</span>
                 </div>
                 <div className="w-full h-2 rounded-full bg-white/[0.04] overflow-hidden">
-                  <div className="h-full rounded-full bg-accent-purple" style={{ width: "45%" }} />
+                  <div className="h-full rounded-full bg-primary" style={{ width: "45%" }} />
                 </div>
-                <div className="flex items-center gap-2 text-xs text-accent-gold">
+                <div className="flex items-center gap-2 text-xs text-warning">
                   <AlertTriangle className="h-3 w-3" />
                   Balance below 50%. Top up recommended.
                 </div>

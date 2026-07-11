@@ -29,11 +29,11 @@ export function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 shrink-0 border-r border-[rgba(255,255,255,0.06)] min-h-screen hidden lg:block">
+    <aside className="w-64 shrink-0 border-r border-border min-h-screen hidden lg:block">
       <div className="p-6">
         <Link href="/admin" className="flex items-center gap-3 mb-8">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-accent-purple to-accent-blue flex items-center justify-center shadow-lg shadow-accent-purple/20">
-            <span className="text-white font-black text-xs font-[family-name:var(--font-space)]">GNT</span>
+          <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center">
+            <span className="text-black font-black text-xs font-[family-name:var(--font-space)]">GNT</span>
           </div>
           <span className="text-sm font-semibold tracking-wide font-[family-name:var(--font-space)]">Admin</span>
         </Link>
@@ -48,7 +48,7 @@ export function AdminSidebar() {
                 className={cn(
                   "flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 font-[family-name:var(--font-space)]",
                   active
-                    ? "bg-accent-purple/10 text-accent-purple border border-accent-purple/20"
+                    ? "bg-primary/10 text-primary border border-primary/20"
                     : "text-text-secondary hover:text-text-primary hover:bg-white/[0.04] border border-transparent"
                 )}
               >
