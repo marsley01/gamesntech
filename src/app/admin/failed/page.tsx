@@ -20,32 +20,30 @@ export default function AdminFailed() {
       <AdminSidebar />
       <main className="flex-1 pt-8 pb-16">
         <Container>
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h1 className="text-3xl font-black tracking-tight">Failed Transactions</h1>
-              <p className="text-muted mt-1">{failedTx.length} pending resolution</p>
-            </div>
+          <div className="mb-8">
+            <h1 className="text-2xl font-bold tracking-tight font-[family-name:var(--font-inter)]">Failed Transactions</h1>
+            <p className="text-sm text-text-secondary mt-1">{failedTx.length} pending resolution</p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {failedTx.map((tx) => (
-              <Card key={tx.id} hover={false} className="flex items-center gap-5 p-5">
-                <div className="w-12 h-12 rounded-xl bg-error/10 flex items-center justify-center shrink-0">
-                  <XCircle className="h-6 w-6 text-error" />
+              <Card key={tx.id} hover={false} className="flex items-center gap-5 p-4">
+                <div className="w-10 h-10 rounded-xl bg-error/10 flex items-center justify-center shrink-0">
+                  <XCircle className="h-5 w-5 text-error" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <p className="font-semibold">{tx.product}</p>
+                    <p className="text-sm font-semibold text-text-primary">{tx.product}</p>
                     <Badge variant="error">Failed</Badge>
                   </div>
-                  <p className="text-sm text-muted">
-                    {tx.customer} · {tx.id} · {formatDate(tx.date)}
+                  <p className="text-xs text-text-secondary mt-0.5">
+                    {tx.customer} &middot; {tx.id} &middot; {formatDate(tx.date)}
                   </p>
                   <p className="text-xs text-error mt-1">Reason: {tx.reason}</p>
                 </div>
-                <div className="text-right shrink-0 space-y-2">
-                  <p className="font-bold text-primary">{formatKES(tx.amount)}</p>
-                  <p className="text-xs text-muted">Retries: {tx.retry}/3</p>
+                <div className="text-right shrink-0 space-y-1">
+                  <p className="text-sm font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple">{formatKES(tx.amount)}</p>
+                  <p className="text-xs text-text-secondary">Retries: {tx.retry}/3</p>
                 </div>
                 <div className="flex gap-2 shrink-0">
                   <Button size="sm">

@@ -1,25 +1,40 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bebas_Neue, Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { LayoutClient } from "@/components/layout/LayoutClient";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bebas = Bebas_Neue({
+  variable: "--font-bebas",
   subsets: ["latin"],
+  weight: "400",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const space = Space_Grotesk({
+  variable: "--font-space",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "gamesntech — Premium Gaming & Digital Gift Cards",
+  title: "Games N Tech — Premium Digital Marketplace",
   description:
-    "Premium gaming gift cards, software licenses, and digital subscriptions delivered instantly via M-Pesa.",
+    "Gaming. Software. Gift Cards. AI Tools. Delivered instantly. Africa's most premium digital marketplace.",
   openGraph: {
-    title: "gamesntech — Level Up Your Game",
-    description: "Premium digital gift cards delivered instantly in Kenya.",
+    title: "Games N Tech — Power Your Digital World",
+    description: "Premium digital products delivered instantly across Africa.",
   },
 };
 
@@ -31,9 +46,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      className={`${bebas.variable} ${inter.variable} ${space.variable} ${jetbrains.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col bg-bg-primary text-text-primary">
+        <div className="noise-overlay" />
         <LayoutClient>{children}</LayoutClient>
       </body>
     </html>

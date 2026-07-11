@@ -7,7 +7,9 @@ const footerLinks = [
     links: [
       { label: "Gaming", href: "/store/gaming" },
       { label: "Software", href: "/store/software" },
-      { label: "SaaS", href: "/store/saas" },
+      { label: "AI Tools", href: "/store/ai" },
+      { label: "Gift Cards", href: "/store/gift-cards" },
+      { label: "Streaming", href: "/store/streaming" },
       { label: "All Products", href: "/store" },
     ],
   },
@@ -15,9 +17,9 @@ const footerLinks = [
     title: "Company",
     links: [
       { label: "How It Works", href: "/how-it-works" },
-      { label: "About", href: "#" },
+      { label: "About Us", href: "#" },
       { label: "Contact", href: "#" },
-      { label: "FAQ", href: "#" },
+      { label: "Blog", href: "#" },
     ],
   },
   {
@@ -27,35 +29,48 @@ const footerLinks = [
       { label: "Order Status", href: "/order" },
       { label: "Refund Policy", href: "#" },
       { label: "Terms of Service", href: "#" },
+      { label: "Privacy Policy", href: "#" },
     ],
   },
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border mt-auto">
-      <Container className="py-12 md:py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-black font-black text-sm">GNT</span>
+    <footer className="border-t border-[rgba(255,255,255,0.06)] mt-auto">
+      <Container className="py-16">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          <div className="col-span-2 md:col-span-2">
+            <Link href="/" className="flex items-center gap-3 mb-5">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-accent-purple to-accent-blue flex items-center justify-center shadow-lg shadow-accent-purple/20">
+                <span className="text-white font-black text-sm tracking-tight font-[family-name:var(--font-space)]">GNT</span>
               </div>
-              <span className="font-bold text-lg tracking-tight">gamesntech</span>
+              <span className="font-semibold text-sm tracking-wide text-text-primary/80">
+                Games N Tech
+              </span>
             </Link>
-            <p className="text-sm text-muted leading-relaxed max-w-xs">
-              Premium gaming and digital gift cards delivered instantly. Level up your digital life.
+            <p className="text-sm text-text-secondary leading-relaxed max-w-xs mb-6">
+              Africa&apos;s most premium digital marketplace. Gaming, software, AI tools, gift cards, and subscriptions — delivered instantly.
             </p>
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-1.5">
+                <div className="w-8 h-8 rounded-full bg-surface-elevated border border-[rgba(255,255,255,0.06)]" />
+                <div className="w-8 h-8 rounded-full bg-surface-elevated border border-[rgba(255,255,255,0.06)]" />
+                <div className="w-8 h-8 rounded-full bg-surface-elevated border border-[rgba(255,255,255,0.06)]" />
+              </div>
+              <span className="text-xs text-text-secondary">M-Pesa | Visa | Airtel Money</span>
+            </div>
           </div>
           {footerLinks.map((group) => (
             <div key={group.title}>
-              <h4 className="text-sm font-semibold text-foreground mb-4">{group.title}</h4>
+              <h4 className="text-xs tracking-[0.15em] uppercase text-text-secondary font-semibold mb-5 font-[family-name:var(--font-space)]">
+                {group.title}
+              </h4>
               <ul className="space-y-3">
                 {group.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-muted hover:text-foreground transition-colors"
+                      className="text-sm text-text-secondary hover:text-text-primary transition-colors duration-200"
                     >
                       {link.label}
                     </Link>
@@ -65,11 +80,14 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted">&copy; {new Date().getFullYear()} gamesntech. All rights reserved.</p>
-          <div className="flex items-center gap-4 text-sm text-muted">
-            <Link href="#" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-foreground transition-colors">Terms of Service</Link>
+        <div className="mt-14 pt-8 border-t border-[rgba(255,255,255,0.06)] flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-text-secondary">
+            &copy; {new Date().getFullYear()} Games N Tech. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6 text-xs text-text-secondary">
+            <Link href="#" className="hover:text-text-primary transition-colors">Privacy</Link>
+            <Link href="#" className="hover:text-text-primary transition-colors">Terms</Link>
+            <Link href="#" className="hover:text-text-primary transition-colors">Cookies</Link>
           </div>
         </div>
       </Container>

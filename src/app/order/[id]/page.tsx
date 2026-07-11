@@ -7,7 +7,6 @@ export default function OrderPage() {
   const params = useParams();
   const orderId = params.id as string;
 
-  // Simulated order data — in production, fetch from Supabase
   return (
     <CodeReveal
       orderId={orderId}

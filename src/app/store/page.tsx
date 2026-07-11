@@ -4,78 +4,95 @@ import { useState, useMemo } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { ProductCard } from "@/components/store/ProductCard";
-import { StoreFilters, type Filters } from "@/components/store/StoreFilters";
-import { products } from "@/lib/data";
+import { products, categories } from "@/lib/data";
+import { cn } from "@/lib/utils";
+import { Search } from "lucide-react";
 
 export default function StorePage() {
-  const [filters, setFilters] = useState<Filters>({
-    search: "",
-    category: "",
-    sort: "popular",
-  });
+  const [search, setSearch] = useState("");
+  const [activeCategory, setActiveCategory] = useState("");
 
   const filtered = useMemo(() => {
     let result = [...products];
-
-    if (filters.search) {
-      const q = filters.search.toLowerCase();
+    if (activeCategory) {
+      result = result.filter((p) => p.category === activeCategory);
+    }
+    if (search) {
+      const q = search.toLowerCase();
       result = result.filter(
-        (p) =>
-          p.name.toLowerCase().includes(q) ||
-          p.description.toLowerCase().includes(q)
+        (p) => p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q)
       );
     }
-
-    if (filters.category) {
-      result = result.filter((p) => p.category === filters.category);
-    }
-
-    switch (filters.sort) {
-      case "name":
-        result.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case "price-asc":
-        result.sort((a, b) => a.price - b.price);
-        break;
-      case "price-desc":
-        result.sort((a, b) => b.price - a.price);
-        break;
-      case "popular":
-        result.sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
-        break;
-    }
-
     return result;
-  }, [filters]);
+  }, [search, activeCategory]);
 
   return (
-    <main className="pt-24 pb-16">
-      <div className="border-b border-border mb-10">
-        <Container>
-          <div className="py-12">
-            <p className="text-sm font-semibold text-primary tracking-widest uppercase mb-3">
-              Store
-            </p>
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight">
-              All <span className="text-primary">Products</span>
-            </h1>
-          </div>
+    <main className="pt-20 min-h-screen">
+      <div className="border-b border-[rgba(255,255,255,0.06)]">
+        <Container className="py-16">
+          <p className="text-xs tracking-[0.2em] uppercase text-accent-purple mb-4 font-medium font-[family-name:var(--font-space)]">
+            Store
+          </p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-4 font-[family-name:var(--font-inter)]">
+            All <span className="text-glow-purple text-accent-purple">Products</span>
+          </h1>
+          <p className="text-text-secondary max-w-xl">
+            Browse our curated collection of premium digital products.
+          </p>
         </Container>
       </div>
 
-      <Container>
-        <StoreFilters
-          filters={filters}
-          onChange={setFilters}
-          products={filtered}
-        />
+      <Container className="py-10">
+        <div className="flex flex-col sm:flex-row gap-4 mb-10">
+          <div className="relative flex-1">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-text-secondary" />
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full h-12 rounded-xl border border-[rgba(255,255,255,0.08)] bg-surface pl-11 pr-4 text-sm text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-accent-purple/30 focus:ring-1 focus:ring-accent-purple/20 transition-all"
+            />
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-8 scrollbar-none">
+          <button
+            onClick={() => setActiveCategory("")}
+            className={cn(
+              "shrink-0 px-5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all border font-[family-name:var(--font-space)]",
+              activeCategory === ""
+                ? "bg-accent-purple text-white border-accent-purple"
+                : "bg-surface text-text-secondary border-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.15)] hover:text-text-primary"
+            )}
+          >
+            All
+          </button>
+          {categories.map((cat) => (
+            <button
+              key={cat.slug}
+              onClick={() => setActiveCategory(cat.slug)}
+              className={cn(
+                "shrink-0 px-5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all border font-[family-name:var(--font-space)]",
+                activeCategory === cat.slug
+                  ? "bg-accent-purple text-white border-accent-purple"
+                  : "bg-surface text-text-secondary border-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.15)] hover:text-text-primary"
+              )}
+            >
+              {cat.name}
+            </button>
+          ))}
+          <span className="text-xs text-text-secondary ml-auto shrink-0 font-[family-name:var(--font-jetbrains)]">
+            {filtered.length} product{filtered.length !== 1 && "s"}
+          </span>
+        </div>
 
         {filtered.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-lg text-muted">No products found.</p>
+            <p className="text-lg text-text-secondary">No products found.</p>
           </div>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             <AnimatePresence mode="popLayout">
               {filtered.map((product, i) => (
                 <ProductCard key={product.id} product={product} index={i} />

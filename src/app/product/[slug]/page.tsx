@@ -11,11 +11,11 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <main className="pt-24 pb-16">
+      <main className="pt-20 min-h-screen">
         <div className="text-center py-20">
-          <p className="text-4xl mb-4">🔍</p>
+          <p className="text-5xl mb-4">🔍</p>
           <h1 className="text-2xl font-bold mb-2">Product not found</h1>
-          <Link href="/store" className="text-primary hover:underline">
+          <Link href="/store" className="text-accent-purple hover:underline text-sm">
             Browse all products
           </Link>
         </div>

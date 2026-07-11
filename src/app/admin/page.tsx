@@ -35,40 +35,38 @@ const recentOrders = [
 
 export default function AdminDashboard() {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-bg-primary">
       <AdminSidebar />
       <main className="flex-1 pt-8 pb-16">
         <Container>
           <div className="mb-10">
-            <h1 className="text-3xl font-black tracking-tight">Admin Overview</h1>
-            <p className="text-muted mt-1">Your business at a glance</p>
+            <h1 className="text-2xl font-bold tracking-tight font-[family-name:var(--font-inter)]">Overview</h1>
+            <p className="text-sm text-text-secondary mt-1">Your business at a glance</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
             {stats.map((stat) => (
               <StatCard key={stat.label} {...stat} />
             ))}
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            <Card hover={false}>
-              <h3 className="font-bold text-lg mb-4">Recent Orders</h3>
+          <div className="grid lg:grid-cols-2 gap-6">
+            <Card hover={false} className="p-5">
+              <h3 className="text-sm font-bold font-[family-name:var(--font-inter)] mb-4">Recent Orders</h3>
               <div className="space-y-3">
                 {recentOrders.map((order) => (
                   <Link
                     key={order.id}
-                    href={`/admin/orders`}
-                    className="flex items-center justify-between py-2 border-b border-border last:border-0 group"
+                    href="/admin/orders"
+                    className="flex items-center justify-between py-2.5 border-b border-[rgba(255,255,255,0.04)] last:border-0 group"
                   >
                     <div>
-                      <p className="text-sm font-medium group-hover:text-primary transition-colors">
-                        {order.product}
-                      </p>
-                      <p className="text-xs text-muted">{order.customer} · {order.id}</p>
+                      <p className="text-sm font-medium text-text-primary group-hover:text-accent-purple transition-colors">{order.product}</p>
+                      <p className="text-xs text-text-secondary">{order.customer} &middot; {order.id}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm font-bold">{formatKES(order.amount)}</p>
-                      <Badge variant={order.status === "completed" ? "success" : order.status === "processing" ? "primary" : order.status === "pending" ? "warning" : "error"}>
+                      <p className="text-sm font-bold font-[family-name:var(--font-jetbrains)]">{formatKES(order.amount)}</p>
+                      <Badge variant={order.status === "completed" ? "success" : order.status === "processing" ? "purple" : order.status === "pending" ? "gold" : "error"}>
                         {order.status}
                       </Badge>
                     </div>
@@ -77,8 +75,8 @@ export default function AdminDashboard() {
               </div>
             </Card>
 
-            <Card hover={false}>
-              <h3 className="font-bold text-lg mb-4">Top Products</h3>
+            <Card hover={false} className="p-5">
+              <h3 className="text-sm font-bold font-[family-name:var(--font-inter)] mb-4">Top Products</h3>
               <div className="space-y-4">
                 {[
                   { name: "Xbox Game Pass Ultimate", count: 142, revenue: 354858 },
@@ -88,17 +86,19 @@ export default function AdminDashboard() {
                   { name: "NVIDIA GeForce NOW", count: 54, revenue: 80946 },
                 ].map((p, i) => (
                   <div key={p.name} className="flex items-center gap-4">
-                    <span className="text-sm font-bold text-muted w-6">{i + 1}</span>
+                    <span className="text-xs font-bold text-text-secondary w-5 font-[family-name:var(--font-jetbrains)]">{i + 1}</span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium truncate">{p.name}</p>
-                      <div className="w-full h-1.5 rounded-full bg-surface-light mt-1 overflow-hidden">
+                      <p className="text-sm text-text-primary truncate">{p.name}</p>
+                      <div className="w-full h-1 rounded-full bg-white/[0.04] mt-1.5 overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-primary"
+                          className="h-full rounded-full bg-accent-purple"
                           style={{ width: `${Math.min(100, (p.count / 142) * 100)}%` }}
                         />
                       </div>
                     </div>
-                    <span className="text-sm font-bold shrink-0">{formatKES(p.revenue)}</span>
+                    <span className="text-sm font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple shrink-0">
+                      {formatKES(p.revenue)}
+                    </span>
                   </div>
                 ))}
               </div>

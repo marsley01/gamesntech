@@ -19,19 +19,19 @@ export function StatCard({ label, value, change, positive, icon: Icon, className
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       className={cn(
-        "rounded-2xl border border-border bg-surface p-5 hover:border-border-light transition-colors",
+        "rounded-2xl border border-[rgba(255,255,255,0.06)] bg-surface p-5 hover:bg-surface-elevated hover:border-[rgba(255,255,255,0.1)] transition-all duration-300",
         className
       )}
     >
       <div className="flex items-start justify-between mb-3">
-        <span className="text-sm text-muted">{label}</span>
-        <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
-          <Icon className="h-4 w-4 text-primary" />
+        <span className="text-xs text-text-secondary tracking-wide">{label}</span>
+        <div className="w-8 h-8 rounded-xl bg-accent-purple/10 flex items-center justify-center">
+          <Icon className="h-4 w-4 text-accent-purple" />
         </div>
       </div>
-      <p className="text-2xl font-black tracking-tight">{value}</p>
+      <p className="text-2xl font-bold font-[family-name:var(--font-jetbrains)] tracking-tight">{value}</p>
       {change && (
-        <div className="flex items-center gap-1 mt-1">
+        <div className="flex items-center gap-1 mt-1.5">
           {positive ? (
             <TrendingUp className="h-3 w-3 text-success" />
           ) : (

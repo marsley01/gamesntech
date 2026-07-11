@@ -23,45 +23,45 @@ export default function AdminCustomers() {
         <Container>
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-3xl font-black tracking-tight">Customers</h1>
-              <p className="text-muted mt-1">{customers.length} total customers</p>
+              <h1 className="text-2xl font-bold tracking-tight font-[family-name:var(--font-inter)]">Customers</h1>
+              <p className="text-sm text-text-secondary mt-1">{customers.length} total customers</p>
             </div>
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-text-secondary" />
               <input
                 type="text"
                 placeholder="Search customers..."
-                className="h-11 w-64 rounded-xl border border-border bg-surface pl-10 pr-4 text-sm text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary"
+                className="h-10 w-60 rounded-xl border border-[rgba(255,255,255,0.08)] bg-surface pl-10 pr-4 text-xs text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-accent-purple/30 focus:ring-1 focus:ring-accent-purple/20 transition-all"
               />
             </div>
           </div>
 
           <Card hover={false} className="p-0 overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full text-xs">
                 <thead>
-                  <tr className="border-b border-border bg-surface-light">
-                    <th className="text-left py-3 px-5 font-semibold text-muted">Customer</th>
-                    <th className="text-left py-3 px-5 font-semibold text-muted">Phone</th>
-                    <th className="text-left py-3 px-5 font-semibold text-muted">Orders</th>
-                    <th className="text-left py-3 px-5 font-semibold text-muted">Total Spent</th>
-                    <th className="text-left py-3 px-5 font-semibold text-muted">Joined</th>
-                    <th className="text-left py-3 px-5 font-semibold text-muted">Status</th>
+                  <tr className="border-b border-[rgba(255,255,255,0.06)] bg-white/[0.02]">
+                    <th className="text-left py-3 px-5 font-semibold text-text-secondary tracking-wide font-[family-name:var(--font-space)]">Customer</th>
+                    <th className="text-left py-3 px-5 font-semibold text-text-secondary tracking-wide font-[family-name:var(--font-space)]">Phone</th>
+                    <th className="text-left py-3 px-5 font-semibold text-text-secondary tracking-wide font-[family-name:var(--font-space)]">Orders</th>
+                    <th className="text-left py-3 px-5 font-semibold text-text-secondary tracking-wide font-[family-name:var(--font-space)]">Spent</th>
+                    <th className="text-left py-3 px-5 font-semibold text-text-secondary tracking-wide font-[family-name:var(--font-space)]">Joined</th>
+                    <th className="text-left py-3 px-5 font-semibold text-text-secondary tracking-wide font-[family-name:var(--font-space)]">Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {customers.map((c) => (
-                    <tr key={c.email} className="border-b border-border last:border-0 hover:bg-surface-light transition-colors">
+                    <tr key={c.email} className="border-b border-[rgba(255,255,255,0.04)] last:border-0 hover:bg-white/[0.02] transition-colors">
                       <td className="py-3 px-5">
-                        <p className="font-medium">{c.name}</p>
-                        <p className="text-xs text-muted">{c.email}</p>
+                        <p className="text-text-primary font-medium">{c.name}</p>
+                        <p className="text-text-secondary">{c.email}</p>
                       </td>
-                      <td className="py-3 px-5 text-muted">{c.phone}</td>
-                      <td className="py-3 px-5 font-bold">{c.orders}</td>
-                      <td className="py-3 px-5 font-bold">{formatKES(c.spent)}</td>
-                      <td className="py-3 px-5 text-muted">{formatDate(c.joined)}</td>
+                      <td className="py-3 px-5 text-text-secondary">{c.phone}</td>
+                      <td className="py-3 px-5 font-bold font-[family-name:var(--font-jetbrains)]">{c.orders}</td>
+                      <td className="py-3 px-5 font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple">{formatKES(c.spent)}</td>
+                      <td className="py-3 px-5 text-text-secondary">{formatDate(c.joined)}</td>
                       <td className="py-3 px-5">
-                        <Badge variant={c.status === "active" ? "success" : c.status === "new" ? "info" : "default"}>
+                        <Badge variant={c.status === "active" ? "success" : c.status === "new" ? "blue" : "default"}>
                           {c.status}
                         </Badge>
                       </td>

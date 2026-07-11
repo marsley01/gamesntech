@@ -15,6 +15,14 @@ const orders = [
   { id: "GNT-005", customer: "James N.", email: "james@example.com", product: "NVIDIA GeForce NOW", amount: 1499, status: "failed" as const, date: new Date() },
 ];
 
+const statusVariant = {
+  completed: "success" as const,
+  processing: "purple" as const,
+  pending: "gold" as const,
+  failed: "error" as const,
+  confirmed: "blue" as const,
+};
+
 export default function AdminOrders() {
   return (
     <div className="flex min-h-screen">
@@ -23,47 +31,45 @@ export default function AdminOrders() {
         <Container>
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-3xl font-black tracking-tight">Orders</h1>
-              <p className="text-muted mt-1">{orders.length} total orders</p>
+              <h1 className="text-2xl font-bold tracking-tight font-[family-name:var(--font-inter)]">Orders</h1>
+              <p className="text-sm text-text-secondary mt-1">{orders.length} total orders</p>
             </div>
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-text-secondary" />
               <input
                 type="text"
                 placeholder="Search orders..."
-                className="h-11 w-64 rounded-xl border border-border bg-surface pl-10 pr-4 text-sm text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary"
+                className="h-10 w-60 rounded-xl border border-[rgba(255,255,255,0.08)] bg-surface pl-10 pr-4 text-xs text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-accent-purple/30 focus:ring-1 focus:ring-accent-purple/20 transition-all"
               />
             </div>
           </div>
 
           <Card hover={false} className="p-0 overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full text-xs">
                 <thead>
-                  <tr className="border-b border-border bg-surface-light">
-                    <th className="text-left py-3 px-5 font-semibold text-muted">Order ID</th>
-                    <th className="text-left py-3 px-5 font-semibold text-muted">Customer</th>
-                    <th className="text-left py-3 px-5 font-semibold text-muted">Product</th>
-                    <th className="text-left py-3 px-5 font-semibold text-muted">Amount</th>
-                    <th className="text-left py-3 px-5 font-semibold text-muted">Date</th>
-                    <th className="text-left py-3 px-5 font-semibold text-muted">Status</th>
+                  <tr className="border-b border-[rgba(255,255,255,0.06)] bg-white/[0.02]">
+                    <th className="text-left py-3 px-5 font-semibold text-text-secondary tracking-wide font-[family-name:var(--font-space)]">Order</th>
+                    <th className="text-left py-3 px-5 font-semibold text-text-secondary tracking-wide font-[family-name:var(--font-space)]">Customer</th>
+                    <th className="text-left py-3 px-5 font-semibold text-text-secondary tracking-wide font-[family-name:var(--font-space)]">Product</th>
+                    <th className="text-left py-3 px-5 font-semibold text-text-secondary tracking-wide font-[family-name:var(--font-space)]">Amount</th>
+                    <th className="text-left py-3 px-5 font-semibold text-text-secondary tracking-wide font-[family-name:var(--font-space)]">Date</th>
+                    <th className="text-left py-3 px-5 font-semibold text-text-secondary tracking-wide font-[family-name:var(--font-space)]">Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {orders.map((order) => (
-                    <tr key={order.id} className="border-b border-border last:border-0 hover:bg-surface-light transition-colors">
-                      <td className="py-3 px-5 font-mono text-xs">{order.id}</td>
+                    <tr key={order.id} className="border-b border-[rgba(255,255,255,0.04)] last:border-0 hover:bg-white/[0.02] transition-colors">
+                      <td className="py-3 px-5 font-mono font-[family-name:var(--font-jetbrains)] text-text-primary">{order.id}</td>
                       <td className="py-3 px-5">
-                        <p className="font-medium">{order.customer}</p>
-                        <p className="text-xs text-muted">{order.email}</p>
+                        <p className="text-text-primary font-medium">{order.customer}</p>
+                        <p className="text-text-secondary">{order.email}</p>
                       </td>
-                      <td className="py-3 px-5">{order.product}</td>
-                      <td className="py-3 px-5 font-bold">{formatKES(order.amount)}</td>
-                      <td className="py-3 px-5 text-muted">{formatDate(order.date)}</td>
+                      <td className="py-3 px-5 text-text-primary">{order.product}</td>
+                      <td className="py-3 px-5 font-bold font-[family-name:var(--font-jetbrains)] text-accent-purple">{formatKES(order.amount)}</td>
+                      <td className="py-3 px-5 text-text-secondary">{formatDate(order.date)}</td>
                       <td className="py-3 px-5">
-                        <Badge variant={order.status === "completed" ? "success" : order.status === "processing" ? "primary" : order.status === "pending" ? "warning" : "error"}>
-                          {order.status}
-                        </Badge>
+                        <Badge variant={statusVariant[order.status]}>{order.status}</Badge>
                       </td>
                     </tr>
                   ))}

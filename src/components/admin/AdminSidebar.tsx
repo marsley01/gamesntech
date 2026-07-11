@@ -29,13 +29,13 @@ export function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 shrink-0 border-r border-border min-h-screen hidden lg:block">
+    <aside className="w-64 shrink-0 border-r border-[rgba(255,255,255,0.06)] min-h-screen hidden lg:block">
       <div className="p-6">
-        <Link href="/admin" className="flex items-center gap-2 mb-8">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-black font-black text-sm">GNT</span>
+        <Link href="/admin" className="flex items-center gap-3 mb-8">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-accent-purple to-accent-blue flex items-center justify-center shadow-lg shadow-accent-purple/20">
+            <span className="text-white font-black text-xs font-[family-name:var(--font-space)]">GNT</span>
           </div>
-          <span className="font-bold">Admin Panel</span>
+          <span className="text-sm font-semibold tracking-wide font-[family-name:var(--font-space)]">Admin</span>
         </Link>
 
         <nav className="space-y-1">
@@ -46,10 +46,10 @@ export function AdminSidebar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all",
+                  "flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 font-[family-name:var(--font-space)]",
                   active
-                    ? "bg-primary/10 text-primary border border-primary/20"
-                    : "text-muted hover:text-foreground hover:bg-surface-light border border-transparent"
+                    ? "bg-accent-purple/10 text-accent-purple border border-accent-purple/20"
+                    : "text-text-secondary hover:text-text-primary hover:bg-white/[0.04] border border-transparent"
                 )}
               >
                 <link.icon className="h-4 w-4" />
