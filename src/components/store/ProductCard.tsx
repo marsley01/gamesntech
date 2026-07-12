@@ -3,11 +3,10 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Badge } from "@/components/ui/Badge";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { cn, formatKES } from "@/lib/utils";
 import type { Product } from "@/lib/data";
-import { ShoppingCart, Star } from "lucide-react";
+import { ShoppingCart, Zap } from "lucide-react";
 
 export function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -62,31 +61,30 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
               }}
             />
 
-            <div className="relative">
-              <ProductImage product={product} showOverlay />
-              {product.badge && (
-                <div className="absolute top-3 left-3 z-20">
-                  <Badge variant="orange">{product.badge}</Badge>
+            <div className="p-5 flex gap-4">
+              <ProductImage
+                src={product.image}
+                alt={product.name}
+                width={80}
+                height={80}
+                padding={8}
+                bgColor="#111120"
+              />
+              <div className="flex-1 min-w-0 space-y-2">
+                <h3 className="text-base font-bold leading-tight text-text-primary group-hover:text-primary transition-colors duration-300 font-[family-name:var(--font-inter)]">
+                  {product.name}
+                </h3>
+                <p className="text-sm text-text-secondary leading-relaxed line-clamp-2">
+                  {product.description}
+                </p>
+                <div className="flex items-center gap-1.5 text-xs font-medium text-primary">
+                  <Zap className="h-3 w-3" />
+                  Instant delivery
                 </div>
-              )}
-            </div>
-
-            <div className="p-5 space-y-3">
-              <h3 className="text-base font-bold leading-tight text-text-primary group-hover:text-primary transition-colors duration-300 font-[family-name:var(--font-inter)]">
-                {product.name}
-              </h3>
-
-              <p className="text-sm text-text-secondary leading-relaxed line-clamp-2">
-                {product.description}
-              </p>
-
-              <div className="flex items-center gap-2 text-xs">
-                <Star className="h-3 w-3 fill-primary text-primary" />
-                <span className="text-text-primary font-medium">{product.rating}</span>
-                <span className="text-text-secondary">({product.reviews.toLocaleString()})</span>
               </div>
-
-              <div className="flex items-center justify-between pt-2 border-t border-border">
+            </div>
+            <div className="px-5 pb-5">
+              <div className="flex items-center justify-between pt-3 border-t border-border">
                 <span className="text-lg font-bold font-[family-name:var(--font-jetbrains)] text-text-primary">
                   {formatKES(product.price)}
                 </span>

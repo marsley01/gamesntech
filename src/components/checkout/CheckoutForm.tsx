@@ -115,7 +115,7 @@ export function CheckoutForm() {
                     }`}
                   >
                     <span className="text-2xl shrink-0">
-                      {p.category === "gaming" ? "🎮" : p.category === "software" ? "💻" : p.category === "ai" ? "🤖" : p.category === "gift-cards" ? "🎁" : "📺"}
+                      {p.category === "gaming" ? "🎮" : p.category === "gift-cards" ? "🎁" : "📺"}
                     </span>
                     <div className="flex-1 min-w-0 text-left">
                       <p className="text-sm font-semibold text-text-primary">{p.name}</p>

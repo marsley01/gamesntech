@@ -3,14 +3,12 @@
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
-import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { ProductImage } from "@/components/ui/ProductImage";
+import { ProductGallery } from "@/components/product/ProductGallery";
 import { formatKES } from "@/lib/utils";
 import type { Product } from "@/lib/data";
-import { ArrowLeft, Shield, Zap, CheckCircle, ShoppingCart, Star } from "lucide-react";
+import { ArrowLeft, Shield, Zap, CheckCircle, ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { Particles } from "@/components/effects/Particles";
 
 const features = [
@@ -42,9 +40,7 @@ export function ProductDetail({ product }: { product: Product }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="aspect-[4/3] rounded-2xl border border-border overflow-hidden shadow-gnt">
-              <ProductImage product={product} aspect="4/3" />
-            </div>
+            <ProductGallery images={product.images} name={product.name} />
           </motion.div>
 
           <motion.div
@@ -54,7 +50,6 @@ export function ProductDetail({ product }: { product: Product }) {
             className="space-y-6"
           >
             <div className="space-y-4">
-              {product.badge && <Badge variant="orange">{product.badge}</Badge>}
               <p className="text-[11px] tracking-[0.15em] uppercase text-text-secondary font-medium font-[family-name:var(--font-space)]">
                 {product.category.replace("-", " ")}
               </p>
@@ -66,18 +61,9 @@ export function ProductDetail({ product }: { product: Product }) {
               </p>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1">
-                <Star className="h-4 w-4 fill-primary text-primary" />
-                <span className="text-sm font-semibold">{product.rating}</span>
-              </div>
-              <span className="text-sm text-text-secondary">
-                {product.reviews.toLocaleString()} reviews
-              </span>
-              {product.platform && (
-                <span className="text-sm text-text-secondary">{product.platform}</span>
-              )}
-            </div>
+            {product.platform && (
+              <div className="text-sm text-text-secondary">{product.platform}</div>
+            )}
 
             <div className="text-4xl font-bold font-[family-name:var(--font-jetbrains)] text-primary">
               {formatKES(product.price)}

@@ -3,7 +3,6 @@ import { FeaturedProducts } from "@/components/sections/FeaturedProducts";
 import { CategoryUniverse } from "@/components/sections/CategoryUniverse";
 import { TrendingProducts } from "@/components/sections/TrendingProducts";
 import { WhyGNT } from "@/components/sections/WhyGNT";
-import { CustomerReviews } from "@/components/sections/CustomerReviews";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { products, categories } from "@/lib/data";
@@ -46,7 +45,6 @@ export default function HomePage() {
 
       <TrendingProducts />
       <WhyGNT />
-      <CustomerReviews />
       <FAQ />
       <FinalCTA />
     </main>

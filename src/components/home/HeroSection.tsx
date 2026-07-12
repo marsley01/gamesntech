@@ -121,26 +121,6 @@ export function HeroSection() {
             </Link>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 2.8 }}
-            className="mt-16 flex items-center gap-8 text-sm"
-          >
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="w-7 h-7 rounded-full border-2 border-bg-primary bg-surface-elevated"
-                />
-              ))}
-            </div>
-            <span className="text-text-secondary">
-              Trusted by{" "}
-              <span className="text-text-primary font-semibold font-[family-name:var(--font-jetbrains)]">10,000+</span>{" "}
-              customers across Africa
-            </span>
-          </motion.div>
         </div>
       </motion.div>
 

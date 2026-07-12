@@ -17,19 +17,12 @@ const footerLinks = [
     title: "Company",
     links: [
       { label: "How It Works", href: "/how-it-works" },
-      { label: "About Us", href: "#" },
-      { label: "Contact", href: "#" },
-      { label: "Blog", href: "#" },
     ],
   },
   {
     title: "Support",
     links: [
-      { label: "Help Center", href: "#" },
       { label: "Order Status", href: "/order" },
-      { label: "Refund Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
-      { label: "Privacy Policy", href: "#" },
     ],
   },
 ];
@@ -57,7 +50,7 @@ export function Footer() {
                 <div className="w-8 h-8 rounded-full bg-surface-elevated border border-[rgba(255,255,255,0.06)]" />
                 <div className="w-8 h-8 rounded-full bg-surface-elevated border border-[rgba(255,255,255,0.06)]" />
               </div>
-              <span className="text-xs text-text-secondary">M-Pesa | Visa | Airtel Money</span>
+              <span className="text-xs text-text-secondary">M-Pesa | Visa</span>
             </div>
           </div>
           {footerLinks.map((group) => (
@@ -84,11 +77,6 @@ export function Footer() {
           <p className="text-xs text-text-secondary">
             &copy; {new Date().getFullYear()} Games N Tech. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-xs text-text-secondary">
-            <Link href="#" className="hover:text-text-primary transition-colors">Privacy</Link>
-            <Link href="#" className="hover:text-text-primary transition-colors">Terms</Link>
-            <Link href="#" className="hover:text-text-primary transition-colors">Cookies</Link>
-          </div>
         </div>
       </Container>
     </footer>
