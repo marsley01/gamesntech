@@ -1,14 +1,28 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/effects/SectionHeading";
 import { SectionBackground } from "@/components/effects/SectionBackground";
 import { ProductCard } from "@/components/store/ProductCard";
-
-const products: { id: string; name: string; slug: string; description: string; price: number; image: string; category: string; trending: boolean }[] = [];
+import { createClient } from "@/lib/supabase/client";
+import type { Product } from "@/types";
 
 export function TrendingProducts() {
-  const trending = products.filter((p) => p.trending);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase
+      .from("products")
+      .select("*")
+      .eq("status", "active")
+      .order("total_sales", { ascending: false })
+      .limit(8)
+      .then(({ data }) => {
+        if (data) setProducts(data as Product[]);
+      });
+  }, []);
 
   return (
     <section className="relative py-24 md:py-32">
@@ -23,7 +37,7 @@ export function TrendingProducts() {
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {trending.slice(0, 8).map((product, i) => (
+          {products.map((product, i) => (
             <ProductCard key={product.id} product={product} index={i} />
           ))}
         </div>

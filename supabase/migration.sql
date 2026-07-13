@@ -45,6 +45,7 @@ CREATE TABLE products (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   seller_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
   title TEXT NOT NULL,
+  slug TEXT NOT NULL,
   description TEXT,
   category product_category NOT NULL,
   price INTEGER NOT NULL CHECK (price >= 0),
@@ -58,6 +59,7 @@ CREATE TABLE products (
 CREATE INDEX idx_products_seller ON products(seller_id);
 CREATE INDEX idx_products_status ON products(status);
 CREATE INDEX idx_products_category ON products(category);
+CREATE UNIQUE INDEX idx_products_slug ON products(slug);
 
 -- 3. ORDERS
 CREATE TABLE orders (

@@ -15,8 +15,6 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
 
   const validImages = images.filter((img) => img);
   const currentSrc = validImages[selectedIndex];
-  const hasError = currentSrc ? imgError[selectedIndex] : true;
-
   const initials = name
     .split(" ")
     .map((w) => w.charAt(0))

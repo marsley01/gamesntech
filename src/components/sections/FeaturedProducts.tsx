@@ -1,14 +1,28 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/effects/SectionHeading";
 import { SectionBackground } from "@/components/effects/SectionBackground";
 import { ProductCard } from "@/components/store/ProductCard";
-
-const products: { id: string; name: string; slug: string; description: string; price: number; image: string; category: string; featured: boolean }[] = [];
+import { createClient } from "@/lib/supabase/client";
+import type { Product } from "@/types";
 
 export function FeaturedProducts() {
-  const featured = products.filter((p) => p.featured);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase
+      .from("products")
+      .select("*")
+      .eq("status", "active")
+      .order("total_sales", { ascending: false })
+      .limit(6)
+      .then(({ data }) => {
+        if (data) setProducts(data as Product[]);
+      });
+  }, []);
 
   return (
     <section className="relative py-24 md:py-32">
@@ -22,7 +36,7 @@ export function FeaturedProducts() {
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featured.map((product, i) => (
+          {products.map((product, i) => (
             <ProductCard key={product.id} product={product} index={i} />
           ))}
         </div>

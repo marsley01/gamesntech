@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { cn, formatKES } from "@/lib/utils";
-interface Product { id: string; name: string; slug: string; description: string; price: number; image: string; category: string }
+import type { Product } from "@/types";
 import { ShoppingCart, Zap } from "lucide-react";
 
 export function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
@@ -63,8 +63,8 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
 
             <div className="p-5 flex gap-4">
               <ProductImage
-                src={product.image}
-                alt={product.name}
+                src={product.cover_image_url}
+                alt={product.title}
                 width={80}
                 height={80}
                 padding={8}
@@ -72,7 +72,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
               />
               <div className="flex-1 min-w-0 space-y-2">
                 <h3 className="text-base font-bold leading-tight text-text-primary group-hover:text-primary transition-colors duration-300 font-[family-name:var(--font-inter)]">
-                  {product.name}
+                  {product.title}
                 </h3>
                 <p className="text-sm text-text-secondary leading-relaxed line-clamp-2">
                   {product.description}

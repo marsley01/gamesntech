@@ -1,18 +1,50 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { ProductCard } from "@/components/store/ProductCard";
 import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
+import type { Product, ProductCategory } from "@/types";
 
-const products: { id: string; name: string; slug: string; description: string; price: number; image: string; category: string }[] = [];
-const categories: { slug: string; name: string }[] = [];
+const CATEGORY_LABELS: Record<ProductCategory, string> = {
+  software: "Software",
+  templates: "Templates",
+  ebooks: "E-Books",
+  game_keys: "Game Keys",
+  courses: "Courses",
+  music: "Music",
+  other: "Other",
+};
 
 export default function StorePage() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("");
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase
+      .from("products")
+      .select("*")
+      .eq("status", "active")
+      .order("created_at", { ascending: false })
+      .then(({ data }) => {
+        if (data) setProducts(data as Product[]);
+        setLoading(false);
+      });
+  }, []);
+
+  const categories = useMemo(() => {
+    const set = new Set(products.map((p) => p.category));
+    return Array.from(set).map((cat) => ({
+      slug: cat,
+      name: CATEGORY_LABELS[cat] || cat,
+    }));
+  }, [products]);
 
   const filtered = useMemo(() => {
     let result = [...products];
@@ -22,11 +54,13 @@ export default function StorePage() {
     if (search) {
       const q = search.toLowerCase();
       result = result.filter(
-        (p) => p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q)
+        (p) =>
+          p.title.toLowerCase().includes(q) ||
+          (p.description && p.description.toLowerCase().includes(q))
       );
     }
     return result;
-  }, [search, activeCategory]);
+  }, [search, activeCategory, products]);
 
   return (
     <main className="pt-20 min-h-screen">
@@ -76,20 +110,29 @@ export default function StorePage() {
               onClick={() => setActiveCategory(cat.slug)}
               className={cn(
                 "shrink-0 px-5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all border font-[family-name:var(--font-space)]",
-                  activeCategory === cat.slug
-                    ? "bg-primary text-black border-primary"
-                    : "bg-surface text-text-secondary border-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.15)] hover:text-text-primary"
+                activeCategory === cat.slug
+                  ? "bg-primary text-black border-primary"
+                  : "bg-surface text-text-secondary border-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.15)] hover:text-text-primary"
               )}
             >
               {cat.name}
             </button>
           ))}
           <span className="text-xs text-text-secondary ml-auto shrink-0 font-[family-name:var(--font-jetbrains)]">
-            {filtered.length} product{filtered.length !== 1 && "s"}
+            {loading ? "..." : `${filtered.length} product${filtered.length !== 1 ? "s" : ""}`}
           </span>
         </div>
 
-        {filtered.length === 0 ? (
+        {loading ? (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div
+                key={i}
+                className="rounded-2xl border border-border bg-surface p-5 h-48 animate-pulse"
+              />
+            ))}
+          </div>
+        ) : filtered.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-lg text-text-secondary">No products found.</p>
           </div>

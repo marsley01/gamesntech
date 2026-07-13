@@ -22,6 +22,7 @@ export interface Product {
   id: string;
   seller_id: string;
   title: string;
+  slug: string;
   description: string | null;
   category: ProductCategory;
   price: number;

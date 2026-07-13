@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { Badge } from "@/components/ui/Badge";
 import { formatKES } from "@/lib/utils";
-const products: { id: string; name: string; slug: string; description: string; price: number; image: string; category: string }[] = [];
+import type { Product } from "@/types";
+import { createClient } from "@/lib/supabase/client";
 import {
   ArrowLeft,
   Smartphone,
@@ -31,14 +31,35 @@ export function CheckoutForm() {
   const searchParams = useSearchParams();
   const preselected = searchParams.get("product");
 
+  const [products, setProducts] = useState<Product[]>([]);
+  const [productsLoading, setProductsLoading] = useState(true);
+
   const [step, setStep] = useState(0);
-  const [selectedProduct, setSelectedProduct] = useState(
-    products.find((p) => p.slug === preselected) || null
-  );
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [gameId, setGameId] = useState("");
   const [phone, setPhone] = useState("254");
   const [email, setEmail] = useState("");
   const [processing, setProcessing] = useState(false);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase
+      .from("products")
+      .select("*")
+      .eq("status", "active")
+      .order("title", { ascending: true })
+      .then(({ data }) => {
+        if (data) {
+          const products = data as Product[];
+          setProducts(products);
+          if (preselected) {
+            const match = products.find((p) => p.slug === preselected);
+            if (match) setSelectedProduct(match);
+          }
+        }
+        setProductsLoading(false);
+      });
+  }, [preselected]);
 
   const handlePayment = async () => {
     setProcessing(true);
@@ -47,6 +68,14 @@ export function CheckoutForm() {
     const orderId = `GNT-${Date.now().toString(36).toUpperCase()}`;
     router.push(`/order/${orderId}`);
   };
+
+  if (productsLoading) {
+    return (
+      <main className="pt-20 min-h-screen flex items-center justify-center">
+        <div className="w-8 h-8 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
+      </main>
+    );
+  }
 
   return (
     <main className="pt-20 min-h-screen relative">
@@ -114,11 +143,8 @@ export function CheckoutForm() {
                         : "border-border bg-surface hover:bg-surface-elevated hover:border-border-hover"
                     }`}
                   >
-                    <span className="text-2xl shrink-0">
-                      {p.category === "gaming" ? "🎮" : p.category === "gift-cards" ? "🎁" : "📺"}
-                    </span>
                     <div className="flex-1 min-w-0 text-left">
-                      <p className="text-sm font-semibold text-text-primary">{p.name}</p>
+                      <p className="text-sm font-semibold text-text-primary">{p.title}</p>
                       <p className="text-xs text-text-secondary truncate">{p.description}</p>
                     </div>
                     <span className="text-base font-bold font-[family-name:var(--font-jetbrains)] text-primary shrink-0">
@@ -160,7 +186,7 @@ export function CheckoutForm() {
                 id="email"
               />
 
-              {selectedProduct?.category === "gaming" && (
+              {selectedProduct?.category === "game_keys" && (
                 <Input
                   label="Game ID / Username"
                   placeholder="Enter your gaming account ID"
@@ -214,7 +240,7 @@ export function CheckoutForm() {
                   <Package className="h-5 w-5 text-primary shrink-0" />
                   <div className="flex-1 flex items-center justify-between">
                     <span className="text-sm text-text-secondary">Product</span>
-                    <span className="text-sm font-semibold text-text-primary">{selectedProduct?.name}</span>
+                    <span className="text-sm font-semibold text-text-primary">{selectedProduct?.title}</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">

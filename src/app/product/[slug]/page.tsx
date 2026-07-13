@@ -1,10 +1,41 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import { ProductDetail } from "@/components/product/ProductDetail";
+import { createClient } from "@/lib/supabase/client";
+import type { Product } from "@/types";
 import Link from "next/link";
 
 export default function ProductPage() {
-  const product = null as unknown as { id: string; name: string; slug: string; description: string; price: number; image: string; images: string[]; category: string; platform?: string };
+  const params = useParams();
+  const slug = params.slug as string;
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase
+      .from("products")
+      .select("*")
+      .eq("slug", slug)
+      .eq("status", "active")
+      .single()
+      .then(({ data, error }) => {
+        if (data && !error) setProduct(data as Product);
+        setLoading(false);
+      });
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <main className="pt-20 min-h-screen">
+        <div className="flex items-center justify-center h-[60vh]">
+          <div className="w-8 h-8 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
+        </div>
+      </main>
+    );
+  }
 
   if (!product) {
     return (

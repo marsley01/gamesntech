@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { formatKES } from "@/lib/utils";
-interface Product { id: string; name: string; slug: string; description: string; price: number; image: string; images: string[]; category: string; platform?: string; region?: string }
+import type { Product } from "@/types";
 import { ArrowLeft, Shield, Zap, CheckCircle, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { Particles } from "@/components/effects/Particles";
@@ -19,6 +19,7 @@ const features = [
 
 export function ProductDetail({ product }: { product: Product }) {
   const router = useRouter();
+  const images = product.cover_image_url ? [product.cover_image_url] : [];
 
   return (
     <main className="pt-20 min-h-screen relative">
@@ -40,7 +41,7 @@ export function ProductDetail({ product }: { product: Product }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <ProductGallery images={product.images} name={product.name} />
+            <ProductGallery images={images} name={product.title} />
           </motion.div>
 
           <motion.div
@@ -51,19 +52,15 @@ export function ProductDetail({ product }: { product: Product }) {
           >
             <div className="space-y-4">
               <p className="text-[11px] tracking-[0.15em] uppercase text-text-secondary font-medium font-[family-name:var(--font-space)]">
-                {product.category.replace("-", " ")}
+                {product.category.replace("_", " ")}
               </p>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.05] tracking-tight font-[family-name:var(--font-inter)]">
-                {product.name}
+                {product.title}
               </h1>
               <p className="text-base text-text-secondary leading-relaxed">
                 {product.description}
               </p>
             </div>
-
-            {product.platform && (
-              <div className="text-sm text-text-secondary">{product.platform}</div>
-            )}
 
             <div className="text-4xl font-bold font-[family-name:var(--font-jetbrains)] text-primary">
               {formatKES(product.price)}
