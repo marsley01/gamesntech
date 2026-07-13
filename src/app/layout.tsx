@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Urbanist, DM_Sans, JetBrains_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { LayoutClient } from "@/components/layout/LayoutClient";
 
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-bg-primary text-text-primary">
         <div className="noise-overlay" />
         <LayoutClient>{children}</LayoutClient>
+        <SpeedInsights />
       </body>
     </html>
   );
