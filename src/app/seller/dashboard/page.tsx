@@ -8,9 +8,9 @@ import { LogOut } from "lucide-react";
 export default function SellerDashboardPage() {
   const router = useRouter();
   const [profile, setProfile] = useState<{ full_name: string; email: string } | null>(null);
-  const supabase = createClient();
 
   useEffect(() => {
+    const supabase = createClient();
     async function load() {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
@@ -25,9 +25,10 @@ export default function SellerDashboardPage() {
       if (data) setProfile(data);
     }
     load();
-  }, [router, supabase]);
+  }, [router]);
 
   async function handleSignOut() {
+    const supabase = createClient();
     await supabase.auth.signOut();
     router.push("/auth/signin");
   }
