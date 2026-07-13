@@ -4,9 +4,11 @@ import { useState, useMemo } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { ProductCard } from "@/components/store/ProductCard";
-import { products, categories } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
+
+const products: { id: string; name: string; slug: string; description: string; price: number; image: string; category: string }[] = [];
+const categories: { slug: string; name: string }[] = [];
 
 export default function StorePage() {
   const [search, setSearch] = useState("");

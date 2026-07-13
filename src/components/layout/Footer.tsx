@@ -5,24 +5,8 @@ const footerLinks = [
   {
     title: "Products",
     links: [
-      { label: "Gaming", href: "/store/gaming" },
-      { label: "Software", href: "/store/software" },
-      { label: "AI Tools", href: "/store/ai" },
-      { label: "Gift Cards", href: "/store/gift-cards" },
-      { label: "Streaming", href: "/store/streaming" },
       { label: "All Products", href: "/store" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
       { label: "How It Works", href: "/how-it-works" },
-    ],
-  },
-  {
-    title: "Support",
-    links: [
-      { label: "Order Status", href: "/order" },
     ],
   },
 ];

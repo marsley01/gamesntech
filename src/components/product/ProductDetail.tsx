@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { formatKES } from "@/lib/utils";
-import type { Product } from "@/lib/data";
+interface Product { id: string; name: string; slug: string; description: string; price: number; image: string; images: string[]; category: string; platform?: string; region?: string }
 import { ArrowLeft, Shield, Zap, CheckCircle, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { Particles } from "@/components/effects/Particles";

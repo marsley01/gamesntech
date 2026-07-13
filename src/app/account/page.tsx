@@ -4,7 +4,6 @@ import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { formatKES, formatDate } from "@/lib/utils";
-import type { Order, OrderStatus } from "@/lib/data";
 import { motion } from "framer-motion";
 import {
   User,
@@ -16,60 +15,28 @@ import {
   Eye,
 } from "lucide-react";
 
-const mockOrders: Order[] = [
-  {
-    id: "GNT-ABC123",
-    product_id: "1",
-    product_name: "NVIDIA GeForce NOW",
-    product_image: "",
-    category: "gaming",
-    price: 1499,
-    status: "completed",
-    code: "GNT-XK9M-2P4R-7W8Q",
-    created_at: new Date(Date.now() - 86400000).toISOString(),
-    payment_method: "M-Pesa",
-  },
-  {
-    id: "GNT-DEF456",
-    product_id: "2",
-    product_name: "Xbox Game Pass Ultimate",
-    product_image: "",
-    category: "gaming",
-    price: 2499,
-    status: "processing",
-    created_at: new Date().toISOString(),
-    payment_method: "M-Pesa",
-  },
-  {
-    id: "GNT-GHI789",
-    product_id: "9",
-    product_name: "ChatGPT Plus",
-    product_image: "",
-    category: "ai",
-    price: 2599,
-    status: "completed",
-    code: "GNT-ABC1-DEF2-GHI3",
-    created_at: new Date(Date.now() - 604800000).toISOString(),
-    payment_method: "M-Pesa",
-  },
-];
-
-const statusVariant: Record<OrderStatus, "orange" | "success" | "blue" | "error"> = {
+const statusVariant: Record<string, "orange" | "success" | "blue" | "error"> = {
   pending: "orange",
-  confirmed: "blue",
-  processing: "orange",
   completed: "success",
   failed: "error",
+  refunded: "error",
 };
 
+const mockOrders: {
+  id: string;
+  product_name: string;
+  price: number;
+  status: string;
+  created_at: string;
+  code?: string;
+}[] = [];
+
 export default function AccountPage() {
-  const totalSpent = mockOrders
-    .filter((o) => o.status === "completed")
-    .reduce((sum, o) => sum + o.price, 0);
+  const totalSpent = 0;
 
   const stats = [
     { icon: Package, label: "Total Orders", value: mockOrders.length.toString() },
-    { icon: TrendingUp, label: "Completed", value: mockOrders.filter((o) => o.status === "completed").length.toString() },
+    { icon: TrendingUp, label: "Completed", value: "0" },
     { icon: CreditCard, label: "Total Spent", value: formatKES(totalSpent) },
   ];
 

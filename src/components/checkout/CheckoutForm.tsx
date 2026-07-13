@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
 import { formatKES } from "@/lib/utils";
-import { products } from "@/lib/data";
+const products: { id: string; name: string; slug: string; description: string; price: number; image: string; category: string }[] = [];
 import {
   ArrowLeft,
   Smartphone,

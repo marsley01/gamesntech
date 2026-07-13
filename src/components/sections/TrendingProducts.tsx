@@ -4,7 +4,8 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/effects/SectionHeading";
 import { SectionBackground } from "@/components/effects/SectionBackground";
 import { ProductCard } from "@/components/store/ProductCard";
-import { products } from "@/lib/data";
+
+const products: { id: string; name: string; slug: string; description: string; price: number; image: string; category: string; trending: boolean }[] = [];
 
 export function TrendingProducts() {
   const trending = products.filter((p) => p.trending);

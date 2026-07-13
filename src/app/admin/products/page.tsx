@@ -6,8 +6,9 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { formatKES } from "@/lib/utils";
-import { products } from "@/lib/data";
 import { Plus, Pencil, Trash2 } from "lucide-react";
+
+const products: { id: string; name: string; description: string; price: number; category: string; featured: boolean }[] = [];
 
 export default function AdminProducts() {
   return (

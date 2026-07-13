@@ -1,13 +1,10 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import { ProductDetail } from "@/components/product/ProductDetail";
-import { products } from "@/lib/data";
 import Link from "next/link";
 
 export default function ProductPage() {
-  const params = useParams();
-  const product = products.find((p) => p.slug === params.slug);
+  const product = null as unknown as { id: string; name: string; slug: string; description: string; price: number; image: string; images: string[]; category: string; platform?: string };
 
   if (!product) {
     return (

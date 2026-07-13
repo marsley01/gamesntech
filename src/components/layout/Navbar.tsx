@@ -9,11 +9,7 @@ import { Menu, X, ShoppingCart, User } from "lucide-react";
 
 const navLinks = [
   { href: "/store", label: "Store" },
-  { href: "/store/gaming", label: "Gaming" },
-  { href: "/store/software", label: "Software" },
-  { href: "/store/ai", label: "AI" },
-  { href: "/store/gift-cards", label: "Gift Cards" },
-  { href: "/support", label: "Support" },
+  { href: "/how-it-works", label: "How It Works" },
 ];
 
 export function Navbar() {

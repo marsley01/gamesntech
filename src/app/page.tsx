@@ -5,12 +5,9 @@ import { TrendingProducts } from "@/components/sections/TrendingProducts";
 import { WhyGNT } from "@/components/sections/WhyGNT";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { products, categories } from "@/lib/data";
+const categories: { slug: string; name: string; description: string }[] = [];
 
 export default function HomePage() {
-  const getProductCount = (slug: string) =>
-    products.filter((p) => p.category === slug).length;
-
   const universeData = categories.map((cat) => {
     const config: Record<string, { accent: "orange" | "blue" | "purple"; gradient: string; glow: string; icon: string }> = {
       gaming: { accent: "orange", gradient: "bg-gradient-to-b from-primary/[0.03] via-transparent to-transparent", glow: "rgba(245,166,35,0.06)", icon: "🎮" },
@@ -38,7 +35,7 @@ export default function HomePage() {
           icon={uni.icon}
           gradient={uni.gradient}
           glowColor={uni.glow}
-          productCount={getProductCount(uni.slug)}
+          productCount={0}
           reversed={i % 2 === 1}
         />
       ))}

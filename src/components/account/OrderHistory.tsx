@@ -4,16 +4,16 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { formatKES, formatDate } from "@/lib/utils";
-import type { Order, OrderStatus } from "@/lib/data";
+type OrderStatus = 'pending' | 'completed' | 'failed' | 'refunded';
+interface Order { id: string; product_name: string; product_image: string; price: number; status: OrderStatus; code?: string; created_at: string; category: string; payment_method: string }
 import { Package, Eye } from "lucide-react";
 import Link from "next/link";
 
 const statusVariant: Record<OrderStatus, "orange" | "success" | "blue" | "error"> = {
   pending: "orange",
-  confirmed: "blue",
-  processing: "blue",
   completed: "success",
   failed: "error",
+  refunded: "error",
 };
 
 export function OrderHistory({ orders }: { orders: Order[] }) {

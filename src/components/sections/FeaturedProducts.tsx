@@ -4,7 +4,8 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/effects/SectionHeading";
 import { SectionBackground } from "@/components/effects/SectionBackground";
 import { ProductCard } from "@/components/store/ProductCard";
-import { products } from "@/lib/data";
+
+const products: { id: string; name: string; slug: string; description: string; price: number; image: string; category: string; featured: boolean }[] = [];
 
 export function FeaturedProducts() {
   const featured = products.filter((p) => p.featured);

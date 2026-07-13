@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { cn, formatKES } from "@/lib/utils";
-import type { Product } from "@/lib/data";
+interface Product { id: string; name: string; slug: string; description: string; price: number; image: string; category: string }
 import { ShoppingCart, Zap } from "lucide-react";
 
 export function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {

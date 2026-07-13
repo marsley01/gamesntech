@@ -1,24 +1,19 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Urbanist, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { LayoutClient } from "@/components/layout/LayoutClient";
 
-const bebas = Bebas_Neue({
-  variable: "--font-bebas",
+const urbanist = Urbanist({
+  variable: "--font-urbanist",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "600", "700", "900"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const space = Space_Grotesk({
-  variable: "--font-space",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -46,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebas.variable} ${inter.variable} ${space.variable} ${jetbrains.variable} h-full antialiased`}
+      className={`${urbanist.variable} ${dmSans.variable} ${jetbrains.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg-primary text-text-primary">
         <div className="noise-overlay" />

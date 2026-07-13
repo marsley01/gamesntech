@@ -4,8 +4,10 @@ import { useMemo } from "react";
 import { useParams } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { ProductCard } from "@/components/store/ProductCard";
-import { products, categories } from "@/lib/data";
 import { Particles } from "@/components/effects/Particles";
+
+const products: { id: string; name: string; slug: string; description: string; price: number; image: string; category: string }[] = [];
+const categories: { slug: string; name: string; description: string }[] = [];
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";

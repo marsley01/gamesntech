@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { useState } from "react";
-import type { Product } from "@/lib/data";
+import type { Product } from "@/types";
 
 export type Filters = {
   search: string;
